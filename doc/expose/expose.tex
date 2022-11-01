@@ -1,0 +1,136 @@
+%Schriftgröße, Layout, Papierformat, Art des Dokumentes
+\documentclass[11pt,twoside,a4paper,titlepage]{article}
+%Einstellungen der Seitenränder
+\usepackage[inner=3.0cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+% wegen "lastchecked"
+\usepackage{url}
+% hyperref mit sinnvollen einstellungen
+\usepackage[pdftex,
+        colorlinks=true,
+        urlcolor=black,                       % \href{...}{...} external (URL)
+        filecolor=black,                      % \href{...} local file
+        linkcolor=black,                      % \ref{...} and \pageref{...}
+        citecolor=black,
+        pdfauthor={Richard Cubek},
+        pdfkeywords={},
+        pdfproducer={pdfLaTeX},
+    	%pdfadjustspacing=1,
+        plainpages=false,
+        pdfpagelabels,
+        pagebackref,
+        pdfpagemode=UseOutlines,
+        pdfstartview={FitV},
+        bookmarksopenlevel=section,
+        bookmarksopen=false]{hyperref} 
+% meist verwendetes Grafik-Paket
+\usepackage[pdftex]{graphicx}
+%\usepackage[authoryear]{natbib}
+% weitere Pakete
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{color}
+\usepackage{verbatim,framed} 
+
+\onehalfspacing %1.5-facher zeilenabstand
+
+%Kopf- und Fußzeile
+\usepackage{fancyhdr}
+\fancyhf{}
+
+% Informationen zur Arbeit
+\title{{Das ist der Titel meiner Bachelor-Arbeit}}
+\author{Erika Musterfrau}
+\date{Jan 29th, 2018}
+
+%\setcitestyle{square}
+
+\begin{document}
+
+% no indent
+\setlength{\parindent}{0pt}
+
+% Einbinden der Titelseite
+\input{title.tex}
+
+% Seitenstil
+\pagestyle{fancy}
+
+%Kopfzeile kapitel außen
+\fancyhead[RO,LE]{Abstract}
+
+
+\newpage
+
+%\pagestyle{empty}
+%\cleardoublepage{}
+%\pagestyle{fancy}
+
+% titel/inhaltsverzeichnis
+
+\fancyhead[RO,LE]{Contents}
+\tableofcontents
+
+\fancyhead[RO,LE]{\nouppercase{\leftmark}}
+\fancyfoot[RO,LE]{\thepage}
+
+%Linie oben
+\renewcommand{\headrulewidth}{0.5pt}
+
+% Zähler für Seiten
+\setcounter{page}{1}
+
+\newpage
+
+% BEGINN INHALT **************************************************************
+
+\section{Einleitung}
+
+\subsection{Motivation}
+
+\subsection{Ziel}
+
+\subsection{Eigene Leistung}
+
+\subsection{Aufbau der Arbeit}
+
+\section{Grundbegriffe (Anhang)}
+
+\section{Zielsetzung und Anforderung}
+
+\section{Stand der Technik und Forschung}
+
+\section{Lösungsideen}
+
+\section{Evaluation der Lösungsideen anhand der Anforderungen} 
+
+\section{Implementierung}
+
+\section{Evaluation der Implementierung}
+
+\section{Fazit und Ausblick}
+
+
+% ENDE INHALT ****************************************************************
+
+
+
+%\nocite{*} % list all references
+% Stil der Zitate bzw. Verweise
+\bibliographystyle{apalike}
+%\bibliographystyle{abbrvdin}
+%\bibliography{references}
+\fancyhead[RO,LE]{References}
+%\listoffigures
+%\listoftables
+\fancyhead[RO,LE]{Listings}
+%\listofalgorithms
+
+\end{document}

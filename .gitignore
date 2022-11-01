@@ -1,0 +1,14 @@
+# Latex Output files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.loa
+*.lof
+*.log
+*.lot
+*.out
+*.gz
+*.toc
