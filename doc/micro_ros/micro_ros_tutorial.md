@@ -111,3 +111,30 @@ ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 # The microrontroller might not build up a connection.
 # You have to press the reset button.
 ```
+
+## Setup with Vbox
+0. Install Vbox version 6.1.38
+1. Download Ubuntu 20 image
+2. create VDI with atleast 32 GB
+3. Setup Ubuntu
+4. update Ubuntu
+5. Download Guest-Additions Version 6.1.2
+6. Install Guest-Additions
+7. Download VBox Extensions Pack Version 6.38
+8. Setup VBox Extensions
+9. Enable USB in Settings
+10. add host to vboxusers group
+```
+sudo usermod -aG vboxusers <name>
+```
+11. add VBox client user to group
+```
+sudo usermod -aG dialout <name>
+```
+12. Reboot everything
+
+
+
+## Setup with Docker
+
+WIP
