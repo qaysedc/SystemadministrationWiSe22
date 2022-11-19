@@ -136,5 +136,46 @@ sudo usermod -aG dialout <name>
 
 
 ## Setup with Docker
+0. Prerequesits:
+your user is part of docker group
+your user is part of dialout group
+set your the wifi credentials in sdkconfig file
+replace "TEST_WIFI" and "TEST_PASSWORD"
 
-WIP
+
+1. go to docker/
+
+2. run docker build .
+
+3. docker run -it --net=host -v /dev:/dev --privileged <image-name>
+
+Explanation: 
+-it             for interactive shell
+--net=host      to enable network access for container with same ip as host
+-v /dev:/dev    bind mount /dev to enable live updating of tty interfaces
+--privileged    enable access to ttyUSBx
+
+4. Configure firmware:
+
+ros2 run micro_ros_setup configure_firmware.sh [program you want to run e.g. int32_publisher] -t udp -i [your local machine IP] -p 8888
+
+menuconfig should not be necessary but you can check if everything is set appropriately with:
+
+ros2 run micro_ros_setup build_firmware.sh menuconfig
+
+
+5. Build Firmware
+
+ros2 run micro_ros_setup build_firmware.sh
+
+source install/local_setup.bash
+
+6. Flash Firmware
+
+ros2 run micro_ros_setup flash_firmware.sh
+
+7. run Docker micro-ros agent
+
+docker run -it --net=host microros/micro-ros-agent:foxy udp4 -p 8888
+
+8. press reset button on esp32
