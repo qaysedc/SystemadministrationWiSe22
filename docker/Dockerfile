@@ -2,7 +2,7 @@ FROM osrf/ros:foxy-desktop
 
 SHELL ["/bin/bash", "-c"]
 
-RUN apt-get update && apt-get install -y sudo apt-utils dialog
+RUN apt-get update && apt-get install -y sudo apt-utils
 
 
 RUN adduser --home /home/docker --disabled-password --gecos '' docker
@@ -26,19 +26,14 @@ RUN git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git sr
 COPY ./micro-ros_entrypoint.sh /micro-ros_entrypoint.sh
 
 ENV RMW_IMPLEMENTATION=rmw_microxrcedds
-ENV RTOS_TYPE=freertos
-ENV MCU_TYPE=esp32
-ENV PATH="~/.local/bin:${PATH}"
+
 
 RUN echo ". /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 RUN echo ". ~/uros_ws/install/local_setup.bash" >> ~/.bashrc
 
-RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; source ~/uros_ws/install/local_setup.bash; ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32;"
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; source ~/uros_ws/install/setup.bash; ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32;"
 
-#COPY
-
-#RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; source ~/uros_ws/install/local_setup.bash; ros2 run micro_ros_setup build_firmware.sh;"
-
+COPY ./sdkconfig ~/uros_ws/firmware/freertos_apps/microros_esp32_extensions
 
 ENTRYPOINT ["/micro-ros_entrypoint.sh"]
 CMD ["bash"]
