@@ -1,0 +1,10 @@
+Der ESP32 ist der Microcontroller der den ganzen Roboter steuert. Dieser muss natürlich auch mit Spannung versogt werden.
+Der Akku unseres Roboter sind sogenannte 18650 LiIon Akkus, diese sind wiederaufladbar und haben die perfekte Größe 
+für unseren kleinen Roboter.
+
+Die Versorgungsspannung für die Motoren kann direkt von unserem Akkupack abgegriffen werden und zur H-Brücke geführt werden.
+Die H-Brücke benötigt genau so wie der ESP32 eine Versorgungsspannung für die Logik.
+Diese sollte laut Datenblatt bei 5V liegen, erlaubt sind aber auch 3V. Was in unserem Fall ideal ist da unser ESP32
+ebenfalls nur mit 3,3V maxmimal versorgt werden darf.
+
+Die 3,3V Logikspannung werden auf unserer Platine von einem LM317T, einem Lineareren Spannungswandler zur Verfügung gestellt.

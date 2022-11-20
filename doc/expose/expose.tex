@@ -25,7 +25,7 @@
         bookmarksopenlevel=section,
         bookmarksopen=false]{hyperref} 
 % meist verwendetes Grafik-Paket
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 %\usepackage[authoryear]{natbib}
 % weitere Pakete
 \usepackage{subfig}
@@ -158,13 +158,19 @@
 %HARDWARE
 \subsection{Roboter Platform}
 \subsubsection{Elektronik}
+\input{RoboElektronik.tex}
+
 \subsubsection{3D-Druckteile}
+\input{Robo3DDruck.tex}
 
 \section{Evaluation der Implementierung}
 
 \subsection{Fehler und Verbesserungen Frontend}
+
 \subsection{Fehler und Verbesserungen Backend}
+
 \subsection{Fehler und Verbesserungen Roboter Platform}
+\input{BugRobo.tex}
 
 \section{Fazit und Ausblick}
 
