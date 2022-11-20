@@ -55,6 +55,8 @@
 
 %\setcitestyle{square}
 
+\setcounter{secnumdepth}{3}
+
 \begin{document}
 
 % no indent
@@ -111,30 +113,59 @@
 \section{Aufbau der Arbeit}
 \input{aufbau_der_arbeit.tex}
 
+\section{Grundbegriffe}
+\input{grundbegriffe.tex}
+
+\section{Zielsetzung und Anforderungen}
+\input{zielsetzung&anforderungen.tex}
+
 \section{Stand der Technik und Forschung}
 \input{stand_technik_&_forschung.tex}
 
-\section{React Front-End}
-\subsection{Wahl des Frameworks}
+\section{Lösungsideen}
+\input{lösungsideen.tex}
+
+\section{Evaluation der Lösungsideen anhand der Anforderungen}
+
+\subsection{Wahl des Frontend Frameworks}
 \input{frameworkwahl.tex}
 
-\subsection{Aufbau des Frontends (Architektur)}
-\input{frontendarch.tex}
-
-\section{ROS Back-End}
 \subsection{Warum ROS?}
 \input{whyROS.tex}
 
 \subsection{Micro-ROS und RTOS}
 \input{microROS.tex}
 
-\subsection{Firmware Kompilierungs Toolchain}
+
+\subsection{Roboter Platform Prototyp und Designenscheidungen}
+\input{hardplatform.tex}
+
+%----Implementierung----
+\section{Implementierung}
+
+%FRONTEND
+\subsection{React Front-End}
+\subsubsection{Aufbau des Frontends (Architektur)}
+\input{frontendarch.tex}
+
+
+%BACKEND
+\subsection{ROS Back-End}
+\subsubsection{Firmware Kompilierungs Toolchain}
 \input{toolchain.tex}
 
 
-\section{3D gedruckte Roboter Platform}
-\subsection{Prototyp und Designenscheidungen}
-\subsection{Fehler und Verbesserungen}
+%HARDWARE
+\subsection{Roboter Platform}
+\subsubsection{Elektronik}
+\subsubsection{3D-Druckteile}
 
+\section{Evaluation der Implementierung}
+
+\subsection{Fehler und Verbesserungen Frontend}
+\subsection{Fehler und Verbesserungen Backend}
+\subsection{Fehler und Verbesserungen Roboter Platform}
+
+\section{Fazit und Ausblick}
 
 \end{document}
