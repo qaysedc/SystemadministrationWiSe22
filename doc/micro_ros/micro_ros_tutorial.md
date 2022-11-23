@@ -143,11 +143,11 @@ set your the wifi credentials in sdkconfig file
 replace "TEST_WIFI" and "TEST_PASSWORD"
 
 
-1. go to docker/
+1. go to docker/micro-ros-docker/
 
 2. run docker build .
 
-3. docker run -it --net=host -v /dev:/dev --privileged <image-name>
+3. docker run -it --net=host -v </path/to/micro-ros-app>:/home/docker/uros_ws/firmware/freertos_apps/apps/micro-ros-app -v /dev:/dev --privileged <image-name>
 
 Explanation: 
 -it             for interactive shell
@@ -157,7 +157,7 @@ Explanation:
 
 4. Configure firmware:
 
-ros2 run micro_ros_setup configure_firmware.sh [program you want to run e.g. int32_publisher] -t udp -i [your local machine IP] -p 8888
+ros2 run micro_ros_setup configure_firmware.sh micro-ros-app -t udp -i [ros-agent ip] -p 8888
 
 menuconfig should not be necessary but you can check if everything is set appropriately with:
 
