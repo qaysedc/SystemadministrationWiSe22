@@ -35,6 +35,8 @@ RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; source ~/uros_ws/insta
 
 COPY ./sdkconfig ~/uros_ws/firmware/freertos_apps/microros_esp32_extensions
 
+RUN mkdir -p firmware/freertos_apps/apps/micro-ros-app
+
 ENTRYPOINT ["/micro-ros_entrypoint.sh"]
 CMD ["bash"]
 
