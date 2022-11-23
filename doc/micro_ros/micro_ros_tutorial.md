@@ -179,10 +179,15 @@ ros2 run micro_ros_setup flash_firmware.sh
 
 7. run Docker micro-ros agent
 
-# on host
+(on host)
 docker run -it --net=host microros/micro-ros-agent:foxy udp4 -p 8888
 
 8. press reset button on esp32
 
 You should now see that the agent prints out some new lines
 You can now test everything with ros2
+
+
+---
+
+

@@ -23,7 +23,7 @@
 - Github repos
 	- https://github.com/espressif/esp-idf
 - Debugging
-	- 
+	 
 
 - esp-idf vs-code with docker
 	- https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/using-docker-container.md
