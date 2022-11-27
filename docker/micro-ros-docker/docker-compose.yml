@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  micro_ros_toolchain:
+    container_name: test
+    image: qaysedc/micro_ros_toolchain:v0.0.2
+    volumes:
+      - type: bind
+        source: ../../micro-ros-app
+        target: /home/docker/uros_ws/firmware/freertos_apps/apps/micro-ros-app
+      
+      - type: bind
+        source: /dev
+        target: /dev
+    network_mode: "host"        
+    privileged: true
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
