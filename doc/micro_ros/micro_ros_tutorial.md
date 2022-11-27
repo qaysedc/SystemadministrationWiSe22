@@ -157,6 +157,7 @@ Explanation:
 
 4. Configure firmware:
 
+(in uros_ws/)
 ros2 run micro_ros_setup configure_firmware.sh micro-ros-app -t udp -i [ros-agent ip] -p 8888
 
 menuconfig should not be necessary but you can check if everything is set appropriately with:
@@ -190,4 +191,16 @@ You can now test everything with ros2
 
 ---
 
+
+For Development one can just change the files micro-ros-app/ folder
+
+for "debugging" we currently need to use the RCCHECK function it prints the information to the Serial connection
+
+to start a container, run:
+
+1. docker compose up -d
+2. docker ps (look for container name)
+3. docker attach container_name
+
+Firmware is already configured. If you have setup the sdkconfig file, you can build and flash.
 
