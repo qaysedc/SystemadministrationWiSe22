@@ -1,23 +1,36 @@
-\begin{flushleft}
-    Micro ROS ist eine fork von ROS und damit auch lauffähig auf schwächeren Systemen.
-    Als Microcontroller für unsere Roboter Platform fiel die Entscheidung auf einen ESP32.
-    Der ESP32 bietet für seine Kosten und seine Größe ausreichend Rechenpower und
-    desweiteren unterstützt das Micro-ROS Framework bereits den ESP32.
-    Als alternativen für den ESP32 könnten ansonsten noch ein Rapsberry PI oder ein Arduino
-    bzw. ATmega Microcontroler eingesetzt werden.
+\subsection{Frontend}
+    Das Frontend könnte durch normales plain HTML, CSS und JS realisiert werden. 
+    Da dies aber nicht mehr dem heutigen technischen standart entspricht kämen viele verschiedene Frontend Frameworks in frage.
+    Zur Auswahl stehen React, Vue oder Angular.
 
-    Für das Front-End kommen viele Frameworks in Frage aber wir wollten unsere Auswahl vorerst auf React oder Vue beschränken.
-    Mit diesen Frameworks haben bereits alle unsere Gruppenteilnehmer gearbeitet und somit hatten wir
-    alle schon Erfahrung damit gesammelt.
-    (evtl. plain html,css,js)
+\subsection{Roboter}
+    Zur Demonstration unserer Orchestrierungssoftware soll ein kleiner Roboter gebaut werden.
+    Der Roboter sollte, wie in unseren Anforderungen bereits aufgelistet, einfach und schnell gebaut werden können.
+    Und damit unser kleiner Roboter auch problemlos in der Welt navigieren kann muss dieser auch mit einer Art Lenkung ausgestattet werden.
 
-    Als Notlösung für unser Frontend kämme ansonsten Plain HTML und CSS in frage, was aber höchstwahrschienlich
-    in einem sehr großen Aufwand enden würde.
+    Für solch einen Steuermechanismus kommen viele verschiedene Lösungen infrage:
+    \\
+    Ein Kettenantrieb ähnlich wie in Baggern wäre denkbar. Er benötigt nur 2 Motoren und bietet viel Bewegungsfreheit ohne komplizierte Mechanik. 
+    \\
+    Die Ackermann Lenkung wie Sie heute in allen PKW und LKW vorkommt wäre ebenfalls denkbar. Hierbei müsste man 
+    nur einen Motor einbauen für den allgemeinen vortreib und einen kleinen Servo um die tatsächliche Lenkbewegung der
+    Vorder- oder Hinterache zu realisieren. 
+    \\
+    Der Differentialantrieb wäre eine weitere Methode unseren Antrieb zu realisieren, hierbei werden wie beim Kettenantrieb
+    ebenfalls zwei Motoren benötigt. Allerdings entfällt hierbei die Notwendigkeit einer Laufkette.
+    \\
+    Unsere letze Idee wäre eine Knicklenkung wie sie oft in Baustellenfahrzeugen eingesetzt wird. Es bräuchte nur einen Motor
+    als Antrieb und die etwas kompliziertere Mechanik von der Ackermann Lenkung könnte durch eine simplere ersetzt werden.
+    \\
 
-    Unter anderem soll zur Demonstration unserer Orchestrierungssoftware ein kleiner Roboter gebaut werden.
-    Der Roboter sollte einfach und schnell gebaut werden können durch 3D-Druckbare Teile.
-    Für den Roboter kommen viele verschiedene steuermechanismen in Frage.
-    Zum einen wäre ein Kettenantrieb möglich, eine Ackermann Lenkung oder ein Differentialantrieb.
-    Knicklenkung
+    Unser Roboter kommt natürlich nicht nur mit einem einfachen Antrieb aus sondern muss diesen auch entsprechend 
+    ansteuern können.
+    Ein Arduino könnte sehr gut dafür geeignet sein.
+    \\
+    Ein ESP32 käme auch in frage. Er bietet weitaus mehr Rechenpower als ein Arduino bei minimaler Preiserhöhung.
+    Außerdem unterstützen die meisten ESP32 eine Verbindung über WLAN.
+    \\
+    Als teuerste aber auch Leistungsstärke Kontrolleinheit könnte auch ein Raspebrry Pi dienen.
     
-\end{flushleft}
+    Da wir unsere Roboter mit hilfe vom ROS Framework ansteuern wollen, sollte unsere gewählte Steuereinheit Micro-ROS unterstützen.
+    Micro ROS ist eine fork von ROS selbst und dadurch auchauf schwächeren Systemen lauffähig.
