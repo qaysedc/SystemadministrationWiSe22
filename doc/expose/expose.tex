@@ -13,7 +13,7 @@
         filecolor=black,                      % \href{...} local file
         linkcolor=black,                      % \ref{...} and \pageref{...}
         citecolor=black,
-        pdfauthor={Richard Cubek},
+        pdfauthor={Gruppe 2},
         pdfkeywords={},
         pdfproducer={pdfLaTeX},
     	%pdfadjustspacing=1,
@@ -43,6 +43,7 @@
 \usepackage{lipsum}
 \usepackage{hyperref}
 \usepackage[figure]{hypcap}
+\usepackage{subfig}
 
 \raggedbottom %Allow end of pages to be emtpy after pagebreak
 
@@ -142,7 +143,6 @@
 \subsection{Micro-ROS und RTOS}
 \input{microROS.tex}
 
-
 \subsection{Roboter Platform}
 \input{hardplatform.tex}
 
@@ -163,11 +163,11 @@
 
 %HARDWARE
 \subsection{Roboter Platform}
-\subsubsection{Elektronik}
-\input{RoboElektronik.tex}
-
 \subsubsection{3D-Druckteile}
 \input{Robo3DDruck.tex}
+
+\subsubsection{Elektronik}
+\input{RoboElektronik.tex}
 
 \section{Evaluation der Implementierung}
 

@@ -1,11 +1,58 @@
-Die Wichtisgte Anforderung an die Platform war das diese Modular aufgebaut werden kann. Sprich man kann im Nachhinein
-neue Teile doer Module einfach anschrauben oder kaputte bzw. alte Teile einfach erneuern.
+\begin{flushleft}
+    Die Wichtigste Anforderung an die Platform war das diese Modular aufgebaut werden kann. Sprich man kann im Nachhinein
+    neue Teile, Module oder komplett andere Sensoren einfach anschrauben aber auch kaputte bzw. alte Teile problemlos erneuern.
 
-Die Roboter Platform wurde deshalb iterativ designed. Zu Begin wurde nur das Chassis designed und gedruckt.
-Sobald das Ergebniss zufrieden stellend war wurde das nächste Modul designed und gedruckt.
-So wurde ein art designkette erstellt. Beginnend beim Chassis inkl. Motorhalterung, danach die Freilaufrollen und
-Schlussendlich die Halterung für die Elektronik.
+    Da es sich beim Differentialantreib nur um eine Mechanische Anordnung der Motoren selbst handelt, musste noch ein
+    geeignetes Bauteil als Motor selbst gefunden werden.
+    Die Motoren müssen ein recht hohes Drehmoment aber eine kleine Umdrehungszahl pro Minute aufweisen.
+    Initial war es deshalb die Idee für normale 5V Motoren wie sie auch in DVD Laufwerken verwendet werden ein kleines
+    Getriebe zu konzeptionieren und zu bauen.
 
-Unser finalles Design des Roboter ist unten ersichtlich:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\textwidth]{imgs/Roboter/Real/Getriebe.jpg}
+        \caption{Prototyp des eigenbau Motorgetriebe}
+        \label{fig:prototyp_transmission}%
+    \end{figure}
 
-(Bild folgt)
+    Die Idee bewies sich aber recht schnell als zu schwierig und wurde deshalb fallen gelassen.
+    Als Ersatz für unseren Misslungenen Versuch fiel die Entscheidung auf Modellbau Getriebemotoren. Siehe Abbildung \ref{fig:robot_motor}.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\textwidth]{imgs/Roboter/Real/41eJJZ8mOOL._SX342_.jpg}
+        \caption{Modelbau Getriebemotor}
+        \label{fig:robot_motor}%
+    \end{figure}
+
+    Ein Anforderung an unsere Demo Roboter Platform war die 3D-Druckbarkeit, sowie deren Modularer Aufbau.
+    Das Fahrgestell unseres Roboters setzt sich aus insgesamt 3 Modulen zusammen.
+    Die Motorenhalterung woran die Motoren selbst und auch die H-Brücke befestigt sind.
+    Die Zentrale Platform für unseren Microcontroller.
+    Und die beiden Freirollen an der Front des Roboters.
+
+    Die gesamte Roboter Platform wurde mit Hilfe eines iterativen design Prozesses gestaltet. 
+    Zu Begin wurde nur das Fahrgestell des Roboters designed und gedruckt.
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.3\textwidth]{imgs/Roboter/CAD/Fahrgestell.jpg}
+        \caption{CAD Render vom finalen Fahrgestell}
+        \label{fig:cad_fahrgestell}%
+    \end{figure}
+
+    Sobald das Ergebniss zufriedenstellend war wurde das nächste Modul designed und gedruckt.
+    Dadurch erreichten wir eine Art DEsignkette und konten Sicherstellen das alle Teile bzw. Module zusammen passen
+    und allen anforderungen gerecht werden.
+    Die letzten beiden Module für unseren Demo Roboter waren die Platform für die Elektronik sowie die Freilaufrollen
+    an der Front des Roboters.
+
+    \begin{figure}[h!]
+        \centering
+        \subfloat[\centering Elektronik Platform (finales Design)]{{\includegraphics[width=0.3\textwidth]{imgs/Roboter/CAD/platform.jpg} }}%
+        \qquad
+        \subfloat[\centering Freilaufrollen (2. Version)]{{\includegraphics[width=0.3\textwidth]{imgs/Roboter/CAD/follower wheel.jpg} }}%
+        \caption{CAD Render der Elektronik Platform und den Freilaufrollen}%
+        \label{fig:example}%
+    \end{figure}
+\end{flushleft}
