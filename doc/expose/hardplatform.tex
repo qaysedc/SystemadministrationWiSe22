@@ -1,15 +1,21 @@
 \begin{flushleft}
-    Die Anforderungen an die Roboter Platform für dieses Projekt waren recht klein und einfach gehalten.
+    Die Anforderungen an die Roboter Demo Platform für dieses Projekt waren recht klein und einfach gehalten.
 
     Das Hauptaugenmerk bei der Neuentwicklung und dem Design unserer Roboter Platform sollte zum einen 
     die 3D-Druckbarkeit des Roboters sein aber auch das der Roboter vor allem in kurzer Zeit gedruckt und betriebsfertig gemacht 
     werden kann.
 
-    Die 3D-Druckbarkeit der Teile sollte auf alle Fälle kein Problem darstellen. Die Elektronik für unseren Roboter
-    basiert auf einem ESP32 welches kostengünstig und recht einfach zu beschaffen ist. Die restlichen 
-    elektronischen Bauteile wie z.B. Lineare Spannungswandler können in diversen Elektronik Versandshops gekauft werden.
+    In unserem Fall zeigten sich für die Antriebsart beim Differentialantreib die meisten Vorteile.
+    Wir benötigen nur 2 Motoren die unabhängig voneinander angesteuert werden müssen. Es können normale
+    Reifen verwendet werden und keine aufwendig zu bauende Ketten. Und beim Differentialantreib wird lediglich eine
+    um 360° frei rotierbare Rolle benötigt.
+    Somit entfällt auch ein großer Aufwand bei der Lenkmechanik. 
+
+    Im allgemeinen sollte die 3D-Druckbarkeit der Teile somit kein Problem darstellen. 
+
+    Für die Elektronik bzw. die Steuerung unseres Roboter fiel die Entscheidung auf einen ESP32. 
+    Dieser ist kostengünstig und recht einfach zu beschaffen. 
+    Zusätzlich bietet der ESP32 weitaus mehr Rechenleistung als ein Arduino und garantiert somit auch eine gewisse Skalierbarkeit.
+    Die restlichen elektronischen Bauteile wie z.B. Lineare Spannungswandler können in diversen Elektronik Versandshops gekauft werden.
     
-    Ein weiterer wichtiger Punkt ist die Antriebsart des Roboters. Für unsere Anforderungen eignet sich der sogenannte
-    Differentialantrieb sehr gut. Es werden nur 2 Motoren für den Antrieb benötigt und mindestens eine um 360° drehbare
-    Rolle. 
 \end{flushleft}

@@ -41,6 +41,10 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage[figure]{hypcap}
+
+\raggedbottom %Allow end of pages to be emtpy after pagebreak
 
 \onehalfspacing %1.5-facher zeilenabstand
 
@@ -49,9 +53,9 @@
 \fancyhf{}
 
 % Informationen zur Arbeit
-\title{{Das ist der Titel meiner Bachelor-Arbeit}}
-\author{Erika Musterfrau}
-\date{Jan 29th, 2018}
+\title{{SysAd Projekt Roboter Orchestrierungssoftware}}
+\author{Stefan Geiring, Marvin Müller, Nicolas Baumgärtner}
+\date{Jan 21th, 2023}
 
 %\setcitestyle{square}
 
@@ -112,9 +116,11 @@
 
 \section{Aufbau der Arbeit}
 \input{aufbau_der_arbeit.tex}
+\pagebreak
 
 \section{Grundbegriffe}
 \input{grundbegriffe.tex}
+\pagebreak
 
 \section{Zielsetzung und Anforderungen}
 \input{zielsetzung&anforderungen.tex}
@@ -137,7 +143,7 @@
 \input{microROS.tex}
 
 
-\subsection{Roboter Platform Prototyp und Designenscheidungen}
+\subsection{Roboter Platform}
 \input{hardplatform.tex}
 
 %----Implementierung----
