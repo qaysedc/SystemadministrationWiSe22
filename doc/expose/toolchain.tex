@@ -1,0 +1,42 @@
+\begin{flushleft}
+
+
+    Um Programme auf dem ESP32 ausführen zu können müssen sie zuvor crosscompilt und auf den Speicher des Microcontrollers geflasht werden.
+    Für das Crosscompilen von Programmen, die das Micro-ROS Framework verwenden wird eine Pipeline empfohlen, die aus 4 Teilen besteht.
+
+    1. ROS
+    2. Micro-ROS
+    3. RTOS
+    4. ESP-IDF
+
+    Zu Grunde liegt ersteinmal die ROS2 Compilierungspipeline welche colcon verwendet.
+    Darauf aufbauend folgt die Micro-ROS Pipeline. In dieser Pipeline wird die Crosscompilierung für das entsprechende Realtime Operating System übernommen.
+    Des weiteren wird noch die ESP-IDF Pipeline verwendet, die für die Crosscompilierung für den ESP32 zuständig ist und mit deren Hilfe die Programme auf den Mikrocontroller geflash werden können.
+
+    Die Pipeline welche gerade beschrieben wurde, wurde mit Hilfe von Docker implementiert.
+
+    Als erstes wird ein neuer User inklusive Home-Verzeichnis und entsprechenden Cgroup Berechtigungen angelegt.
+    Für die Berechtigungen ist vor allem die dialout-Gruppe wichtig, da diese Zugriff auf seriellen Ports gibt.
+
+    Die Verwendung eines eigenen Users ohne root-Rechte wird verwendet, 
+    da es von Docker als Best-Practice empfohlen wird um ungewollte Veränderungen zu verhindern (TODO Quelle).
+
+
+    Nach dem Aufsetzen des Users wird die Micro-ROS Pipeline heruntergeladen und mit HIlfe von mitgelieferten Skripten installiert.
+
+    Nach der Installation müssen noch verschiedene Einstellungen vorgenommen werden. So ist es in eine ersten Schritt notwendig das passende RTOS, in diesem Fall "freertos",
+    und den Mikrocontroller zu spezifizieren. Anschließend werden Einstellungen wie die Zugangsdaten für das WLAN-Netzwerk gemacht oder (TODO Beispiel).
+
+    Es ist außerdem noch notwendig den host-user zu den cgroups docker und dialout hinzuzufügen, 
+    da es ansonsten nicht möglich ist den Container zu starten oder Programme auf den Mikrocontroller zu übertragen.
+
+
+    Für das erleichterte Ausführen des Containers wird eine docker-compose-Datei verwendet.
+
+    Der Container wird mit zwei bind-mounts eingerichtet. Einer für das Verzeichnis, 
+    in dem der Code des Roboters ist und ein anderer für das Verzeichnis "/dev" in dem die Ports für das flashen des Mikrocontrollers sind.
+
+    Es werden bind-mounts verwendet um die Daten und Ports, während der Entwicklung ständig aktuell zu halten um den Container nicht immer wieder neu starten zu müssen, wenn sich eine Datei ändert.
+    Das vereinfacht die Entwicklung deutlich, da man wenn man den Mikrocontroller an und absteckt nicht den Container neu starten muss.
+    
+\end{flushleft}
