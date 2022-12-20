@@ -7,6 +7,21 @@
         Das Acronym ROS steht für Robot Operating System, es bietet eine art Framework um Roboter leichter
         einbinden und steuern zu können.
 
+        Der Kern des Frameworks besteht aus Interfaces, genannt ROS-Graphen, die eine anonymisierte und standardisierte Interprozesskommunikation ermöglicht.
+        Dieser Graph ist ein Netzwerk aus "Nodes", welche über "Topics" miteinander kommunizieren.
+        Auf einem topic wird immer dieselbe "message" von Nodes verbreitet. 
+        Für das Verbreiten und Empfangen von Messages müssen die Nodes "Publisher" und "Subscriber" implementieren.
+
+        Des weiteren gibt es noch viele Tools, die beispielsweise Daten visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
+        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als ehr als ein Framework angesehen wird und den Titel "Operating-System" erhalten hat.
+
+        Es gibt eine ältere version von ROS die einfach nur ROS genannt wird und eine neuere Version namens ROS2.
+        Der Unterschied zwischen ROS und ROS2 ist, dass ROS einen zentrallen Server, genannt "ROS-Master" verwendet über den die Kommunikation abläuft und ROS2 einen dezentralen Ansatz verfolgt.
+        
+        ROS2 baut auf dem Data-Distribution Service Standard von OMG auf. 
+        Das ist eine Spezifikation für eine Middleware, welche ein "Data-Centric Subscriber-Publisher (DCPS)"-Modell beschreibt.
+
+
         \item[React:]\hfill\\
         Web Frontend Framework was ursprünglich von Facebook ins leben gerufen wurde.
 
