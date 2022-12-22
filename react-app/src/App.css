@@ -13,6 +13,24 @@
   pointer-events: none;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+main {
+  background-color: #212121;
+}
+
+.mainCard {
+  background-color: #303030 !important;
+  color: white;
+}
+
+.contentCard {
+  background-color: #424242 !important;
+  color: white;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -34,7 +52,7 @@
   color: #61dafb;
 }
 
-.container {
+.containerBox {
   display: flex;
 }
 
@@ -76,13 +94,13 @@ main {
 }
 
 .link:hover {
-  background: lightskyblue;
+  background: #0dcaf0;
   color: #000;
   transition: all 0.5s;
 }
 
 .active {
-  background: lightskyblue;
+  background: #0dcaf0;
   color: #000;
 }
 

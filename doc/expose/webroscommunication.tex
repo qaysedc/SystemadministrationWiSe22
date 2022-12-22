@@ -1,0 +1,46 @@
+\begin{flushleft}
+
+Um in der Webanwendung mit ROS kommunizieren zu können sind unsere wichtigsten Funktionen das Subscriben und Publishen von Topics. Im folgenden Codebeispiel wird gezeigt, wie mittels Javascript und der \textit{roslibjs} Bibliothek ein Subscriber erstellt wird und mit einem Listener in einer Callback-Funktion Änderungen aus einem Topic ausgibt.
+
+\begin{lstlisting}
+    const my_topic_listener = new ROSLIB.Topic({
+        ros,
+        name: topicName,
+        messageType: msgType,
+    });
+
+    my_topic_listener.subscribe((message) => {
+        const newTopics = [...alltopicslist, 
+                {name: topicName, content: msgType}
+            ];
+        setTopics(newTopics);
+    });
+\end{lstlisting}
+
+In \textit{my\_topic\_listener} müssen zur Initialisierung sowohl das ROS-Objekt, der Topic-Name, sowie der Nachrichtentyp des angeforderten Topics enthalten sein.
+
+Als Gegenbeispiel soll hier noch das Publishen von Topics gezeigt werden. Hier haben wir uns erst auf das \textit{/cmd\_vel} Topic beschränkt, welches für die Bewegungsteuerung des Roboters zuständig ist. Hier können lineare Geschwindigkeiten, sowie Einschlagwinkel der Räder übermittelt werden.
+
+\begin{lstlisting}
+    const cmd_vel_listener = new ROSLIB.Topic({
+        ros : ros,
+        name : '/cmd_vel',
+        messageType : 'geometry_msgs/Twist'
+    });
+
+    var twist = new ROSLIB.Message({
+      linear: {
+        x: linear,
+        y: 0,
+        z: 0
+      },
+      angular: {
+        x: 0,
+        y: 0,
+        z: angular
+      }
+    });
+    cmd_vel_listener.publish(twist);
+\end{lstlisting}
+
+\end{flushleft}
