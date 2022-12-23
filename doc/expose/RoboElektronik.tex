@@ -9,8 +9,8 @@
     \end{figure}
 
     Dieser muss natürlich auch mit Spannung versogt werden.
-    Der Akku unseres Roboter sind sogenannte 18650 LiIon Akkus, diese sind wiederaufladbar und haben die perfekte Größe 
-    für unseren kleinen Roboter.
+    Urprünglich waren sogenannte 18650 LiIon Akkus geplant. Allerdings wurde diese Idee verworfen da Sie doch mit viel Aufwand verbunden war.
+    Inzwischen nutzen wir wiederaufladbare 9V Block Batterien. Die Akkus haben die perfekte Größe für unseren kleinen Roboter.
 
     Die Versorgungsspannung für die Motoren kann direkt von unserem Akkupack abgegriffen werden und zur H-Brücke geführt werden.
     Die H-Brücke benötigt genau so wie der ESP32 eine Versorgungsspannung für die Logik.
@@ -21,8 +21,12 @@
 
     \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.5\textwidth, angle=-90,origin=c]{imgs/Roboter/Real/Roboter.jpg}
+        \includegraphics[width=0.4\textwidth, angle=180,origin=c]{imgs/Roboter/Real/Roboter.jpg}
         \caption{Roboter Demo Platform}
-      \end{figure}
+    \end{figure}
+
+    Da durch die Verwendung der 9V Blockbatterie die Versorgungsspannung der Motoren nun die maximal zulässigen 6V
+    überschreitet ist ein zweiter Spannungsregler von nöten der sich um die Reduzierung der Motorenspannung kümmert.
+    Das ganze hat aber auch einen Vorteil da wir nun sehr große Freiheit haben was die Akkuspannung angeht. Theoretisch möglich wären nun bis zu 37V.
 
 \end{flushleft}
