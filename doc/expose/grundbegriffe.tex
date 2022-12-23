@@ -39,8 +39,21 @@
         Mit Hilfe dieser beiden Frameworks wurde die Firmware für unseren Roboter programmiert und kompiliert.
 
         \item[RTOS]\hfill\\
+        Abkürzung für Real Time Operating System. 
+        In diesem Projekt wurde in erster Linie das RTOS 'FreeRTOS' verwendet, das für die Verwendung mit Mikrocontrollern optimiert ist.
+        
         \item[Micro-ROS]\hfill\\
+        Micro-ROS ist eine Kombination von einem RTOS, einer Client-Bibliothek, einer Middleware und einem sogenannten ROS2 Agent, 
+        die Mikrocontroller möglichst effizient in das ROS-Oekosystem einbinden soll.
+        
+        Mit Micro-ROS ist es nicht möglich ROS-messages direkt im Netzwerk zu versenden und mit anderen Teilnehmern direkt in Verbindung zu stehen.
+        Die dafür benötigte Middleware würde zu viele Ressourcen auf einem Mikrocontroller verbrauchen. 
+        Stattdessen gibt es einen sogenannten ROS-Agent, mit dem sich der Mikrocontroller mit Hilfe einer für Mikrocontroller optimierten Middleware verbindet.
+        Der ROS-Agent ist dann im Prinzip eine Brücke zwischen den verschiedenen Middlewares. Entsprechend muss der Agent auch auf leistungsfähigerer Hardware ausgeführt werden.    
+
         \item[ESP-IDF]\hfill\\
+        ESP-IDF steht für Espressif IOT Development Framework. Das ist ein Framework mit dessen Hilfe man ESP-Socs programmieren kann.
+        Das betrifft in dem Fall dann auch den ESP32.
 
         \end{description}
 \end{flushleft}
