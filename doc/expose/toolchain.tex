@@ -19,13 +19,13 @@
     Für die Berechtigungen ist vor allem die dialout-Gruppe wichtig, da diese Zugriff auf seriellen Ports gibt.
 
     Die Verwendung eines eigenen Users ohne root-Rechte wird verwendet, 
-    da es von Docker als Best-Practice empfohlen wird um ungewollte Veränderungen zu verhindern (TODO Quelle).
+    da es von Docker als Best-Practice empfohlen wird um ungewollte Veränderungen zu verhindern.
 
 
     Nach dem Aufsetzen des Users wird die Micro-ROS Pipeline heruntergeladen und mit HIlfe von mitgelieferten Skripten installiert.
 
     Nach der Installation müssen noch verschiedene Einstellungen vorgenommen werden. So ist es in eine ersten Schritt notwendig das passende RTOS, in diesem Fall "freertos",
-    und den Mikrocontroller zu spezifizieren. Anschließend werden Einstellungen wie die Zugangsdaten für das WLAN-Netzwerk gemacht oder (TODO Beispiel).
+    und den Mikrocontroller zu spezifizieren. Anschließend werden Einstellungen wie beispielsweise die Zugangsdaten für das WLAN-Netzwerk eingetragen.
 
     Es ist außerdem noch notwendig den host-user zu den cgroups docker und dialout hinzuzufügen, 
     da es ansonsten nicht möglich ist den Container zu starten oder Programme auf den Mikrocontroller zu übertragen.
