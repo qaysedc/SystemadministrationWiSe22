@@ -6,7 +6,7 @@
     %Außerdem verfügt React über eine enorm gute Dokumentation, da es ständig von seiner eigenen Community verbessert wird.
 
     
-    Zur Auswahl standen uns mehrere Frontend-Framework zur Umsetzung unserer Roboter-Orchestrierungssoftware zur Verfügung. Das erste und wichtigste Kriterium war es hier eine Schnittstelle zu ROS2 zu bekommen, um verschiedenste Topics senden (publish) und empfangen (subscriben) zu können. 
+    Zur Auswahl standen uns mehrere Frontend-Frameworks, zur Umsetzung unserer Roboter-Orchestrierungssoftware, zur Verfügung. Das erste und wichtigste Kriterium war es hier eine Schnittstelle zu ROS2 zu bekommen, um verschiedenste Topics senden (publish) und empfangen (subscriben) zu können. 
 
     Außerdem wollten wir die Webanwendung in einer der bekannteren Webframeworks wie React oder Vue.js umsetzten. Hier stand kein Favorit der beiden im Vorfeld fest, sowie auch wenig bis keine Vorerfahrung. Wie entschieden uns hier für das React Framework, da wir es für sinnvoll hielten, unser Wissens-Repertoire diesbezüglich auch zu erweitern. Ebenso gibt es im Netz mehr Hilfestellungen zu React als zu Vue.js, was bei so einer speziellen Aufgabe wie einer Schnittstelle mit ROS2, schlussendlich zum Vorteil tragen kann. 
 
@@ -22,12 +22,12 @@
         https://github.com/RobotWebTools/roslibjs 
     \end{lstlisting}
     
-    Diese basiert auf Javascript und verwendet Websockets um sich mit der \textit{rosbridge} zu verbinden und somit Funktionen wie, publishen, subscriben, service calls und vieles mehr zur Verfügung stellt. Die \textit{rosbridge} ist ein ROS Paket, welches eine JSON-API zu ROS-Funktionalitäten für "non-ROS programs" (Zitat) zur Verfügung stellt.
+    Diese basiert auf Javascript und verwendet Websockets um sich mit der \textit{rosbridge} zu verbinden und somit Funktionen wie publishen, subscriben, service calls und vieles mehr zur Verfügung stellt. Die \textit{rosbridge} ist ein ROS Paket, welches eine JSON-API zu ROS-Funktionalitäten für nicht ROS-Programme zur Verfügung stellt.
 
     % TODO: Punkt später verlinken
-    Auch diese Bibliothek ist mittlerweile schon etwas älter, wird aber trotzdem noch in sehr vielen Projekten verwendet, weshalb wir uns auch für diese Option entschieden. Auch haben wir zu diesem Zeitpunkt keine andere akzeptable Alternative gefunden (hierzu später in Punk ... mehr), weshalb wir uns für einen Prototypen mit der \textit{roslibjs} Bibliothek entschieden. 
+    Auch diese Bibliothek ist mittlerweile schon etwas älter, wird aber trotzdem noch in sehr vielen Projekten verwendet, weshalb wir uns auch für diese Option entschieden. Auch haben wir zu diesem Zeitpunkt keine andere akzeptable Alternative gefunden (hierzu später im Punk zu \hyperlink{rosboard-target}{rosboard} mehr), weshalb wir uns für einen Prototypen mit der \textit{roslibjs} Bibliothek entschieden. 
 
-    Um unserer Anwendung ebenso einen modernen Look zu verpassen, beschlossen wir eine UI-Komponentenbibliothek zu verwenden. Auch hier standen uns mehrere Optionen zur Auswahl. Zu den beliebtesten und bekanntesten zählen hier \href{https://mui.com}{Material-UI (MUI)}, \href{https://ant.design}{Ant Design (AntD)} und \href{https://react-bootstrap.github.io}{React Bootstrap}. Die Entscheidung fiel uns hier sehr leicht, da schon Erfahrungen im Standard-HTML Bootstrap Framework bestanden, weshalb wir hier auf eine schnellere Einarbeitung in das React Bootstrap Framework hofften.
+    Um unserer Anwendung ebenso einen modernen Look zu verpassen, beschlossen wir eine UI-Komponentenbibliothek zu verwenden. Auch hier standen uns mehrere Optionen zur Auswahl. Zu den Beliebtesten und Bekanntesten zählen hier \href{https://mui.com}{Material-UI (MUI)}, \href{https://ant.design}{Ant Design (AntD)} und \href{https://react-bootstrap.github.io}{React Bootstrap}. Die Entscheidung fiel uns hier sehr leicht, da schon Erfahrungen im Standard-HTML Bootstrap Framework bestanden, weshalb wir hier auf eine schnellere Einarbeitung in das React Bootstrap Framework hofften.
 
     Nun zusammengefasst verwenden wir:
     \begin{itemize}

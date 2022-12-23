@@ -10,14 +10,14 @@ Der wichtigste Punkt war es nun eine lauffähige Schnittstelle zwischen ROS2 und
     https://hub.docker.com/r/osrf/ros/
 \end{lstlisting}
 
-Da ROS Nodes über TCP/UDP Sockets kommunizieren, muss nun eine Brücke geschaffen werden, um Daten mit dem Web-Browser austauschen zu können. Hier schafft das \textit{Rosbridge} Paket Abhilfe, in dem es einen Websocket erstellt, welche in allen gängigen Web-Browsern unterstützt wird. Mit diesem Paket ist es nun Möglich die bekannten Publish- und Subscribe-Funktionalitäten der ROS-Umgebung zu nutzen. Die \textit{Rosbridge} kann ganz einfach über den apt-Paketmanager installiert werden:
+Da ROS Nodes über TCP/UDP Sockets kommunizieren, muss nun eine Brücke geschaffen werden, um Daten mit dem Web-Browser austauschen zu können. Hier schafft das \textit{Rosbridge} Paket Abhilfe, in dem es einen Websocket erstellt, welcher in allen gängigen Web-Browsern unterstützt wird. Mit diesem Paket ist es nun Möglich die bekannten Publish- und Subscribe-Funktionalitäten der ROS-Umgebung zu nutzen. Die \textit{Rosbridge} kann ganz einfach über den apt-Paketmanager installiert werden:
 
 \begin{lstlisting}[language=bash]
     sudo apt install ros-<ROS_DISTRO>-rosbridge-server 
 \end{lstlisting}
 
-
-Für eine genaue Anleitung um die \textit{Rosbridge} lauffähig zu bekommen, wird auf den Anhang verwiesen. 
+% TODO Anhang Anleitung hinzufügen
+Für eine genaue Anleitung um die \textit{Rosbridge} lauffähig zu bekommen, wird auf den Anhang verwiesen. (fehlt noch..) 
 
 Im nächsten Schritt wird eine einfache Webanwendung gebaut, die mit Hilfe der \textit{roslibjs} Bibliothek nun mit der \textit{Rosbridge} kommuniziert und Daten austauscht. 
 Hierzu wird eine simple HTML-Seite erstellt und \textit{roslibjs} inkludiert:
@@ -32,9 +32,10 @@ Hierzu wird eine simple HTML-Seite erstellt und \textit{roslibjs} inkludiert:
 
 \end{lstlisting}
 
-Wenn nun die \textit{Rosbridge} erfolgreich in der ROS-Umgebung, in diesem Fall innerhalb des Docker Containers unseres Prototypens, gelauncht wurde, kann man sich mit einem Javascript-Objekt eine Verbindung zu dem Websocket aufbauen. Hierzu wird die IP-Adresse des Docker-Containers mit dem Port 9090 benötigt. Dies ist die URL, welche wir in unserer Anwendung verwendet haben: \textit{ws://171.17.0.3:9090}. Ist die Verbindung erfolgreich hergestellt, können Publisher und Subscriber an das Objekt angebunden werden. Ausführliche Erklärungen und Code Beispiele sind im Anhang nachzulesen. 
+% TODO Anhang Anleitung hinzufügen
+Wenn nun die \textit{Rosbridge} erfolgreich in der ROS-Umgebung, in diesem Fall innerhalb des Docker Containers unseres Prototypens, gelauncht wurde, kann man sich mit einem Javascript-Objekt eine Verbindung zu dem Websocket aufbauen. Hierzu wird die IP-Adresse des Docker-Containers mit dem Port 9090 benötigt. Mit der URL \textit{ws://171.17.0.3:9090} haben wir uns beispielsweise in unserer Anwendung verbunden. Ist die Verbindung erfolgreich hergestellt, können Publisher und Subscriber an das Objekt angebunden werden. Ausführliche Erklärungen und Code Beispiele sind im Anhang nachzulesen. (fehlt noch..)
 
-Nachdem eine simple Schnittstelle zwischen ROS2 und einem Web-Browser erfolgreich hergestellt wurde, wird es im folgenden um die Umsetzung der React-App gehen. 
+Nachdem eine simple Schnittstelle zwischen ROS2 und einem Web-Browser erfolgreich hergestellt wurde, wird es im Folgenden um die Umsetzung der React-App gehen. 
 
 
 
