@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import Sidebar from './components/Sidebar'
 
 import './App.css';

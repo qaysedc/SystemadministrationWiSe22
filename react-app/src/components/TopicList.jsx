@@ -13,13 +13,15 @@ import ROSLIB from 'roslib';
 
 function TopicList() {
     
-
     const ipAddressRef = useRef()
     const topicNameRef = useRef()
     const [alltopicslist, setTopics] = useState([])
     var ros = null
+    //const [connection, setConnection] = useState(false)
+    var connection = false
     var topics = null;
-
+    
+console.log("hi")
 
 function handleConnection(e) {
     const ipAddress = ipAddressRef.current.value
@@ -28,13 +30,18 @@ function handleConnection(e) {
     console.log(ipAddress)
     ros.on("connection", () => {
         document.getElementById("status").innerHTML = "successful";
+        //setConnection(true)
+        connection = true;
     });
     ros.on("error", (error) => {
         document.getElementById("status").innerHTML = `errored out (${error})`;
+        //setConnection(false)
+        connection = false
     });
 }
 
     let hdt = function handleTopicSub(e) {
+        
     // const topicName = topicNameRef.current.value
     const topicName = e.target.getAttribute("topicName");
     const msgType = e.target.getAttribute("msgType");
@@ -46,16 +53,21 @@ function handleConnection(e) {
         name: topicName,
         messageType: msgType,
     });
-
+    console.log(my_topic_listener);
     my_topic_listener.subscribe((message) => {
-        console.log(message);
-        const ul = document.getElementById("messages");
-        const newMessage = document.createElement("li");
-        newMessage.appendChild(document.createTextNode(message.data));
+        // const ul = document.getElementById("messages");
+        // const newMessage = document.createElement("li");
+        // newMessage.appendChild(document.createTextNode(message.data));
         //ul.appendChild(newMessage);
-        const newTopics = [...alltopicslist, {name: topicName, content: msgType}];
-        setTopics(newTopics);
-        console.log(newTopics)
+        // const newTopics = [...alltopicslist, {name: topicName, content: msgType}];
+
+        console.log("davor")
+        //console.log(newTopics);
+        console.log("danach")
+        // TODO: Bug with multiple Messages -> change content to topicwindow
+        setTopics(current => [...current, {name: topicName, content: msgType}]);
+        // setTopics(newTopics);
+        console.log(alltopicslist)
     });
     }
 
@@ -87,15 +99,14 @@ function getTopics() {
     })
 }
 
-
+console.log(connection)
   return (
-    <>
-        
+    <>       
         <Row className="mb-4">
             <Col xs={8}><Form.Control ref={ipAddressRef} placeholder="Ip Address"></Form.Control></Col>
-            <Col xs={4}><Button variant="secondary" onClick={handleConnection}>Connect</Button></Col>
+            <Col xs={4}><Button variant={connection ? 'success' : 'secondary'} onClick={handleConnection}>{connection ? 'Connected' : 'Connect'}</Button></Col>
         </Row>
-        <p>Connection: <span id="status">N/A</span></p>
+        <p name={connection}>Connection: <span id="status">N/A</span></p>
 
         <Row className="mb-4">
             <Col xs={8}><Form.Control ref={topicNameRef} placeholder="Topic Name"></Form.Control></Col>
