@@ -21,7 +21,6 @@ function TopicList() {
     var connection = false
     var topics = null;
     
-console.log("hi")
 
 function handleConnection(e) {
     const ipAddress = ipAddressRef.current.value
@@ -54,21 +53,16 @@ function handleConnection(e) {
         messageType: msgType,
     });
     console.log(my_topic_listener);
-    my_topic_listener.subscribe((message) => {
-        // const ul = document.getElementById("messages");
-        // const newMessage = document.createElement("li");
-        // newMessage.appendChild(document.createTextNode(message.data));
-        //ul.appendChild(newMessage);
-        // const newTopics = [...alltopicslist, {name: topicName, content: msgType}];
-
-        console.log("davor")
-        //console.log(newTopics);
-        console.log("danach")
-        // TODO: Bug with multiple Messages -> change content to topicwindow
-        setTopics(current => [...current, {name: topicName, content: msgType}]);
-        // setTopics(newTopics);
-        console.log(alltopicslist)
-    });
+    //const [message, setMessage] = useState([])
+    //let thisTopicId = alltopicslist.length === 0 ? 1 : alltopicslist[alltopicslist.length - 1].id + 1
+    setTopics(current => [...current, {
+        id: current.length === 0 ? 1 : current[current.length - 1].id + 1,
+        name: topicName, 
+        messageType: msgType,
+        listener: my_topic_listener
+    }]);
+    
+    
     }
 
 function getTopics() {
@@ -99,7 +93,6 @@ function getTopics() {
     })
 }
 
-console.log(connection)
   return (
     <>       
         <Row className="mb-4">
@@ -120,7 +113,7 @@ console.log(connection)
         <ul id="topics"></ul>
         <Row xs={1} md={2} className="g-4">
             {alltopicslist.map((item, index) => {
-                return <TopicWindow name={item.name} content={item.content} key={index}></TopicWindow>;
+                return <TopicWindow id={item.id} name={item.name} messageType={item.messageType} listener={item.listener} key={index}></TopicWindow>;
             })}
         </Row>
     </>
