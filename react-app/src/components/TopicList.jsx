@@ -5,6 +5,7 @@ import ROSLIB from 'roslib';
 // Components
 import TopicWindow from './TopicWindow'
 import Connection from './Connection';
+import Publish from './Publish';
 
 // Bootstrap Imports
 import Row from 'react-bootstrap/Row';
@@ -79,14 +80,8 @@ function getTopics() {
   return (
     <>       
         <Connection />
-
-        <Row className="mb-4">
-            <Col xs={8}><Form.Control ref={topicNameRef} placeholder="Topic Name"></Form.Control></Col>
-            <Col xs={4}></Col>
-        </Row>
+        <Publish />
         
-        {/* <button onClick={handleTopicSub}>Subscribe</button> */}
-        <p><code>/client_count</code> messages received: </p>
         <Button variant="info" onClick={getTopics}>List Topics</Button>
         <ul id="messages"></ul>
         <ul id="topics"></ul>
