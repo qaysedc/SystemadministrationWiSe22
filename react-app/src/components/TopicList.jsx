@@ -1,43 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react'
-import TopicWindow from './TopicWindow'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { AppContext } from '../App'
+import ROSLIB from 'roslib';
 
+// Components
+import TopicWindow from './TopicWindow'
+import Connection from './Connection';
+
+// Bootstrap Imports
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-import ROSLIB from 'roslib';
-
-
-
 function TopicList() {
+    const { ros } = useContext(AppContext)
     
-    const ipAddressRef = useRef()
     const topicNameRef = useRef()
     const [alltopicslist, setTopics] = useState([])
-    var ros = null
-    //const [connection, setConnection] = useState(false)
-    var connection = false
+
     var topics = null;
     
-
-function handleConnection(e) {
-    const ipAddress = ipAddressRef.current.value
-    if (ipAddress === '') return
-    ros = new ROSLIB.Ros({ url: "ws://"+ipAddress+":9090" });
-    console.log(ipAddress)
-    ros.on("connection", () => {
-        document.getElementById("status").innerHTML = "successful";
-        //setConnection(true)
-        connection = true;
-    });
-    ros.on("error", (error) => {
-        document.getElementById("status").innerHTML = `errored out (${error})`;
-        //setConnection(false)
-        connection = false
-    });
-}
 
     let hdt = function handleTopicSub(e) {
         
@@ -95,11 +78,7 @@ function getTopics() {
 
   return (
     <>       
-        <Row className="mb-4">
-            <Col xs={8}><Form.Control ref={ipAddressRef} placeholder="Ip Address"></Form.Control></Col>
-            <Col xs={4}><Button variant={connection ? 'success' : 'secondary'} onClick={handleConnection}>{connection ? 'Connected' : 'Connect'}</Button></Col>
-        </Row>
-        <p name={connection}>Connection: <span id="status">N/A</span></p>
+        <Connection />
 
         <Row className="mb-4">
             <Col xs={8}><Form.Control ref={topicNameRef} placeholder="Topic Name"></Form.Control></Col>

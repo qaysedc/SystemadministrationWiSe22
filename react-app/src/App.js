@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 //import logo from './logo.svg';
 import Sidebar from './components/Sidebar'
 
@@ -11,24 +11,44 @@ import Robots from './pages/Robots'
 import Topics from './pages/Topics'
 import Console from './pages/Console'
 
+export const AppContext = createContext({defaultOptions: {
+  queries: {
+    refetchOnWindowFocus: false,
+  },
+}})
+
 function App() {
   
-  
+  const [ros, setRos] = useState(null)
+  const [connection, setConnection] = useState(null)
+
+  ros?.on("connection", () => {
+    document.getElementById("status").innerHTML = "successful";
+    //setConnection(true)
+    setConnection(true)
+  });
+  ros?.on("error", (error) => {
+    document.getElementById("status").innerHTML = `errored out (${error})`;
+    //setConnection(false)
+    setConnection(false)
+  });
 
 
   return (
-    <BrowserRouter>
-      <Sidebar>
-        <Routes>
-          <Route path='/'element={<Dashboard/>}/>
-          <Route path='/dashboard'element={<Dashboard/>}/>
-          <Route path='/about'element={<About/>}/>
-          <Route path='/robots'element={<Robots/>}/>
-          <Route path='/topics'element={<Topics/>}/>
-          <Route path='/console'element={<Console/>}/>
-        </Routes>
-      </Sidebar>
-    </BrowserRouter>
+    <AppContext.Provider value={{ros, setRos, connection}}>
+      <BrowserRouter>
+        <Sidebar>
+          <Routes>
+            <Route path='/'element={<Dashboard/>}/>
+            <Route path='/dashboard'element={<Dashboard/>}/>
+            <Route path='/about'element={<About/>}/>
+            <Route path='/robots'element={<Robots/>}/>
+            <Route path='/topics'element={<Topics/>}/>
+            <Route path='/console'element={<Console/>}/>
+          </Routes>
+        </Sidebar>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 
