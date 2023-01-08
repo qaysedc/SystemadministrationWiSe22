@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AppContext } from '../App'
 import {
   FaBars,
   FaRegComment,
@@ -9,9 +10,11 @@ import {
 import { NavLink } from 'react-router-dom'
 
 export default function Sidebar({children}) {
+  const { ros } = useContext(AppContext)
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => setIsOpen(!isOpen)
-  const menuItem = [
+
+  let menuItem = [
     {
       path: '/dashboard',
       name: 'Dashboard',
@@ -26,18 +29,16 @@ export default function Sidebar({children}) {
       path: '/robots',
       name: 'Robots',
       icon: <FaRobot />
-    },
-    {
-      path: '/topics',
-      name: 'Topics',
-      icon: <FaRegComment />
-    },
-    {
-      path: '/console',
-      name: 'Console',
-      icon: <FaTerminal />
     }
   ]
+    ros?.map((item, index) => (
+      menuItem.push({
+        path: '/topics'+index,
+        name: "Topics Robot "+(index+1),
+        icon: <FaRegComment />
+      })
+  ))
+  
   return (
     <div className='containerBox'>
       <div style={{width: isOpen ? '200px' : '50px'}} className='sidebar'>

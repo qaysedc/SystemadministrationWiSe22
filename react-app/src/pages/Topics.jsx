@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import { AppContext } from '../App'
 
 import Card from 'react-bootstrap/Card';
+import TopicList from '../components/TopicList';
 
-export default function Topics() {
+export default function Topics(props) {
+  const { ros } = useContext(AppContext)
   return (
     <>
       <Card className="mainCard">
@@ -10,7 +13,7 @@ export default function Topics() {
         <Card.Body>
           <Card.Title> Topics </Card.Title>
           <Card.Text>
-            Content...
+              <TopicList ros={props.ros} />
           </Card.Text>
         </Card.Body>
       </Card>

@@ -19,19 +19,32 @@ export const AppContext = createContext({defaultOptions: {
 
 function App() {
   
-  const [ros, setRos] = useState(null)
+  const [ros, setRos] = useState([])
   const [connection, setConnection] = useState(null)
 
-  ros?.on("connection", () => {
-    document.getElementById("status").innerHTML = "successful";
-    //setConnection(true)
-    setConnection(true)
-  });
-  ros?.on("error", (error) => {
-    document.getElementById("status").innerHTML = `errored out (${error})`;
-    //setConnection(false)
-    setConnection(false)
-  });
+  // ros[0]?.on("connection", () => {
+  //   document.getElementById("status").innerHTML = "successful";
+  //   //setConnection(true)
+  //   setConnection(true)
+  // });
+  // ros[0]?.on("error", (error) => {
+  //   document.getElementById("status").innerHTML = `errored out (${error})`;
+  //   //setConnection(false)
+  //   setConnection(false)
+  // });
+
+  ros?.map((item) => (
+    item.newRos.on("connection", () => {
+      document.getElementById("status").innerHTML = "successful";
+     setConnection(true)
+    })
+  ))
+  ros?.map((item) => (
+    item.newRos.on("error", (error) => {
+      document.getElementById("status").innerHTML = `errored out (${error})`;
+      setConnection(false)
+    })
+  ))
 
 
   return (
@@ -43,6 +56,9 @@ function App() {
             <Route path='/dashboard'element={<Dashboard/>}/>
             <Route path='/about'element={<About/>}/>
             <Route path='/robots'element={<Robots/>}/>
+            {ros?.map((item, index) => (
+                <Route path={"/topics"+index} element={<Topics ros={item.newRos}/>}/>  
+            ))}   
             <Route path='/topics'element={<Topics/>}/>
             <Route path='/console'element={<Console/>}/>
           </Routes>

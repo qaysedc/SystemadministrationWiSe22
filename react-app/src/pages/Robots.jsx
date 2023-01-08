@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Joypad from '../components/Joypad';
+
 import Card from 'react-bootstrap/Card';
 
 export default function Robots() {
@@ -10,7 +12,7 @@ export default function Robots() {
         <Card.Body>
           <Card.Title> Robots </Card.Title>
           <Card.Text>
-            Content...
+            <Joypad />
           </Card.Text>
         </Card.Body>
       </Card>

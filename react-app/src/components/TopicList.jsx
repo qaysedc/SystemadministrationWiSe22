@@ -14,15 +14,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 
-function TopicList() {
-    const { ros } = useContext(AppContext)
+function TopicList(props) {
+    //const { ros } = useContext(AppContext)
+    const [ros, setRos] = useState(props.ros)
     
     const topicNameRef = useRef()
     const [alltopicslist, setTopics] = useState([])
 
     var topics = null;
     
-
+    console.log(props.ros)
     let hdt = function handleTopicSub(e) {
         
     // const topicName = topicNameRef.current.value
@@ -79,7 +80,6 @@ function getTopics() {
 
   return (
     <>       
-        <Connection />
         <Publish />
         
         <Button variant="info" onClick={getTopics}>List Topics</Button>

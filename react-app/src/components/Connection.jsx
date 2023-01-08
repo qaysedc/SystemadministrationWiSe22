@@ -9,12 +9,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function Connection() {
-    const { setRos, connection } = useContext(AppContext)
+    const { ros, setRos, connection } = useContext(AppContext)
     const [ipAddress, setIpAddress] = useState("172.17.0.3")
 
     const handleConnection = (e) => {
         if (ipAddress === '') return
-        setRos(new ROSLIB.Ros({ url: "ws://"+ipAddress+":9090" }))
+        const newRos = new ROSLIB.Ros({ url: "ws://"+ipAddress+":9090" })
+        setRos(ros => [...ros, {newRos}])
     }
 
   return (

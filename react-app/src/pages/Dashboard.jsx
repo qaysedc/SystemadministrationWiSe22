@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react'
 import TopicList from '../components/TopicList'
 
 import Card from 'react-bootstrap/Card';
+import Connection from '../components/Connection';
+import RobotList from '../components/RobotList';
 
 export default function Dashboard() {
   
@@ -14,7 +16,8 @@ export default function Dashboard() {
           <Card.Body>
             <Card.Title> Card Title </Card.Title>
             <Card.Text>
-              <TopicList />
+              <Connection />
+              <RobotList />
             </Card.Text>
           </Card.Body>
         </Card>
