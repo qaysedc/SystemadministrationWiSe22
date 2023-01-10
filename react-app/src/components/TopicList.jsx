@@ -12,11 +12,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
+import TopicListItem from './TopicListItem';
 
 
 function TopicList(props) {
     //const { ros } = useContext(AppContext)
     const [ros, setRos] = useState(props.ros)
+    const [availableTopics, setAvailableTopics] = useState([])
     
     const topicNameRef = useRef()
     const [alltopicslist, setTopics] = useState([])
@@ -61,30 +64,52 @@ function getTopics() {
 
     topicsClient.callService(request, function(result) {
         console.log("Getting topics...");
-        console.log(result);
-        topics = result.topics;
-        const ul = document.getElementById("topics");
-        for (let i = 0; i < topics.length; i++) {
-        const newTopic = document.createElement("li");
-        newTopic.appendChild(document.createTextNode(topics[i]));
-        let btn = document.createElement("button");
-        btn.onclick = hdt;
-        btn.setAttribute("topicName", topics[i]);
-        btn.setAttribute("msgType", result.types[i]);
-        btn.innerHTML = "Subscribe Topic";
-        newTopic.appendChild(btn);
-        ul.appendChild(newTopic);
+        console.log("result", result)
+        let topicObjs = []
+        for (let i=0; i<result.topics.length; i++) {
+            topicObjs.push({
+                name: result.topics[i],
+                msgType: result.types[i]
+            }) 
         }
+        setAvailableTopics([...availableTopics, ...topicObjs])
+        
+        // topics = result.topics;
+        // const ul = document.getElementById("topics");
+        // for (let i = 0; i < topics.length; i++) {
+        // const newTopic = document.createElement("li");
+        // newTopic.appendChild(document.createTextNode(topics[i]));
+        // let btn = document.createElement("button");
+        // btn.onclick = hdt;
+        // btn.setAttribute("topicName", topics[i]);
+        // btn.setAttribute("msgType", result.types[i]);
+        // btn.innerHTML = "Subscribe Topic";
+        // newTopic.appendChild(btn);
+        // ul.appendChild(newTopic);
+        // }
     })
 }
 
   return (
     <>       
         <Publish />
+        <Row xs={12} md={12} className="g-4 mb-4">
+            <Col>
+                <Button variant="info" onClick={getTopics}>List Topics</Button>
+            </Col>
+        </Row>
         
-        <Button variant="info" onClick={getTopics}>List Topics</Button>
-        <ul id="messages"></ul>
-        <ul id="topics"></ul>
+        {/* <ul id="messages"></ul> */}
+        {/* <ul id="topics"></ul> */}
+        <Row xs={12} md={12} className="g-4 mb-4">
+            <Col>
+                <ListGroup as="ol" numbered>
+                    {availableTopics.map((item) => {
+                        return <TopicListItem name={item.name} subFunction={hdt} msgType={item.msgType} />
+                    })}
+                </ListGroup>
+            </Col>
+        </Row>
         <Row xs={1} md={2} className="g-4">
             {alltopicslist.map((item, index) => {
                 return <TopicWindow id={item.id} name={item.name} messageType={item.messageType} listener={item.listener} key={index}></TopicWindow>;
