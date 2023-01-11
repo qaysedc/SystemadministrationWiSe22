@@ -26,31 +26,24 @@ function TopicList(props) {
 
     var topics = null;
     
-    console.log(props.ros)
     let hdt = function handleTopicSub(e) {
-        
-    // const topicName = topicNameRef.current.value
-    const topicName = e.target.getAttribute("topicName");
-    const msgType = e.target.getAttribute("msgType");
-    console.log("Topic: " + e.target.getAttribute("topicName"));
-    console.log("MsgType: " + e.target.getAttribute("msgType"));
-    if (topicName === '') return
-    const my_topic_listener = new ROSLIB.Topic({
-        ros,
-        name: topicName,
-        messageType: msgType,
-    });
-    console.log(my_topic_listener);
-    //const [message, setMessage] = useState([])
-    //let thisTopicId = alltopicslist.length === 0 ? 1 : alltopicslist[alltopicslist.length - 1].id + 1
-    setTopics(current => [...current, {
-        id: current.length === 0 ? 1 : current[current.length - 1].id + 1,
-        name: topicName, 
-        messageType: msgType,
-        listener: my_topic_listener
-    }]);
-    
-    
+        const topicName = e.target.getAttribute("topicName");
+        const msgType = e.target.getAttribute("msgType");
+        console.log("Topic: " + e.target.getAttribute("topicName"));
+        console.log("MsgType: " + e.target.getAttribute("msgType"));
+        if (topicName === '') return
+        const my_topic_listener = new ROSLIB.Topic({
+            ros,
+            name: topicName,
+            messageType: msgType,
+        });
+
+        setTopics(current => [...current, {
+            id: current.length === 0 ? 1 : current[current.length - 1].id + 1,
+            name: topicName, 
+            messageType: msgType,
+            listener: my_topic_listener
+        }]);
     }
 
 function getTopics() {
@@ -72,35 +65,26 @@ function getTopics() {
                 msgType: result.types[i]
             }) 
         }
-        setAvailableTopics([...availableTopics, ...topicObjs])
-        
-        // topics = result.topics;
-        // const ul = document.getElementById("topics");
-        // for (let i = 0; i < topics.length; i++) {
-        // const newTopic = document.createElement("li");
-        // newTopic.appendChild(document.createTextNode(topics[i]));
-        // let btn = document.createElement("button");
-        // btn.onclick = hdt;
-        // btn.setAttribute("topicName", topics[i]);
-        // btn.setAttribute("msgType", result.types[i]);
-        // btn.innerHTML = "Subscribe Topic";
-        // newTopic.appendChild(btn);
-        // ul.appendChild(newTopic);
-        // }
+        // topicObjs.forEach(newTopic => {
+        //     if (!availableTopics.find(topic => topic.name === newTopic.name)) {
+        //         setAvailableTopics([...availableTopics, newTopic]);
+        //     }
+        // });
+
+        setAvailableTopics(prevTopics => 
+            prevTopics.concat(topicObjs.filter(newTopic => !prevTopics.find(topic => topic.name === newTopic.name)))
+        );
     })
 }
 
   return (
     <>       
-        <Publish />
+        <Publish ros={ros} />
         <Row xs={12} md={12} className="g-4 mb-4">
             <Col>
                 <Button variant="info" onClick={getTopics}>List Topics</Button>
             </Col>
         </Row>
-        
-        {/* <ul id="messages"></ul> */}
-        {/* <ul id="topics"></ul> */}
         <Row xs={12} md={12} className="g-4 mb-4">
             <Col>
                 <ListGroup as="ol" numbered>
