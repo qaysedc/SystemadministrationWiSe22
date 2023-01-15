@@ -14,6 +14,13 @@
         sudo apt install ros-<ROS_DISTRO>-rosbridge-server 
     \end{lstlisting}
 
+    Als nächstes muss die Entwicklungsumgebung gesourced werden und anschließend das Launch-File für die \textit{rosbridge} gestartet:
+    \begin{lstlisting}
+        source /opt/ros/foxy/setup.bash
+        
+        ros2 launch rosbridge_server rosbridge_websocket_launch.xml
+    \end{lstlisting}
+
     Roslibjs Inkludierung in HTML ohne React:
     \begin{lstlisting}[language=html]
     <script 

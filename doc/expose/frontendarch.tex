@@ -41,8 +41,66 @@ So kann für jedes dieser Objekte eine neue eigene Unterseite erstellt werden, u
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{imgs/web/ros_conn.png}
-    \caption{Connection Handler mit Liste und automatischem Navigationspunk}
+    \caption{Connection Handler mit Liste und automatischem Navigationspunkt}
     \label{fig:ros_conn}%
 \end{figure}
+
+Auf diesen nun generierten Topics-Unterseiten des jeweiligen Roboters, können nun Funktionen darauf angewendet werden.
+Für das Publishen auf Topics haben wir uns nur was das \textit{/cmd\_vel} Topic beschränkt, was einen recht simplem Grund hatte.
+Zum Publishen wir natürlich auch der Message-Type der Nachricht benötigt, um dann dynamisch auf jedes beliebige Topic senden zu können, müsste der User ebenso auch den entsprechenden Aufbau der Nachricht haben und diese richtig in ein Textfeld eingeben.
+Dies wäre sowohl aus User Sicht sehr umständlich und fehleranfällig, da die einzelnen Werte nicht mehr in Textfeldern hätten abgefragt werden können. 
+Da das \textit{/cmd\_vel} Topic, welches für die Fortbewegung und Lenkung des Roboters zuständig ist, unser definitiv wichtigstes Topic war, beließen wir es dabei.
+Dieser Nachrichtentyp enthält drei linear- und drei angular-Werte:
+\begin{lstlisting}
+    twist = {
+        linear: {
+            x: 0,
+            y: 0,
+            z: 0
+        },
+        angular: {
+            x: 0,
+            y: 0,
+            z: 0
+        }
+    }
+\end{lstlisting}
+Wobei für die Fortbewegung bei Robotern, die sich auf dem Boden mit Rädern bewegen, nur die x-Werte in linear und angular interessant sind.
+Hierfür haben wir im Frontend zwei Optionen entwickelt. 
+Zum einen war es uns wichtig fest definierte Werte senden zu können, wofür wir uns für einzelne Textfelder pro Wert entschieden.
+Diese wurden dann im Code auf das entsprechende Message (Twist) Format gebracht und an die \textit{rosbridge} gesendet.
+Links in Abbildung \ref{fig:web_publish} sind die Textfelder, mit den jeweiligen Buttons zum Senden und Rücksetzen der Nachricht.
+Bei Reset wird einfach eine neue Nachricht geschickt, die alle Werte wieder auf Null setzt.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imgs/web/web_publish.png}
+    \caption{Zwei Möglichkeiten um auf \textit{/cmd\_vel} zu publishen}
+    \label{fig:web_publish}%
+\end{figure}
+
+Ebenso dachten wir uns auch, dass es eine gute Funktionalität wäre, wenn man den Roboter über Tastatur-Eingabe steuern könne.
+So erstellten wir noch ein Textfeld, welches beim Fokussieren die Tastenfelder einließt.
+Dies konnte mit dem Event-Handler \textit{onKeyPress} in React umgesetzt werden.
+Durch Gedrückthalten der Tasten W, A, S, D, wird der entsprechende linear- oder angular- x-Wert inkrementiert, bzw. dekrementiert.
+Mit der Taste R wird auch diese Nachricht wieder zurückgesetzt.
+In Abbildung \ref{fig:web_publish} ist dies auf der rechten Seite zu sehen.
+Im Anhang in [\ref{webroscomm_code}] wird einmal kurz der Vorgang des Publishen und Subscribens an einem Codebeispiel gezeigt.
+\\
+
+\vspace{0.5cm}
+Als letztes soll noch auf das Subscriben zu offenen Topics über die Webanwendung beschrieben werden.
+Über den Button "List Topics", werden alle momentan zur Verfügung stehenden Topics angeordnet. 
+Wie in Abbildung \ref{fig:web_subscribe} zu sehen ist, öffnet sich unterhalt der Topic-Liste ein Fenster für das jeweilige Topics. 
+Bei mehreren werden diese nebenbei oder darunter automatisch aufgelistet. 
+Innerhalb des Festers werden alle neu ankommenden Nachrichten im JSON-Format gelistet.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{imgs/web/web_subscribe.png}
+    \caption{Topics Liste und Subscription zu \textit{/cmd\_vel} Topic}
+    \label{fig:web_subscribe}%
+\end{figure}
+
 \end{flushleft}
     

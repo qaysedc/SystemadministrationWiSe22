@@ -16,7 +16,7 @@ Für ein fertiges ROS Image mit der Foxy Fitzroy Version kann mit dem \textit{do
 
 Da ROS Nodes über TCP/UDP Sockets kommunizieren, muss nun eine Brücke geschaffen werden, um Daten mit dem Web-Browser austauschen zu können.
 Hier schafft das \cite[Rosbridge]{rosbridgepackage} Paket Abhilfe, in dem es einen Websocket erstellt, welcher in allen gängigen Web-Browsern unterstützt wird. Mit diesem Paket ist es nun möglich die bekannten Publish- und Subscribe-Funktionalitäten der ROS-Umgebung zu nutzen.
-In der Abbildung \ref{fig:rosbridge_chain} wird die eben beschriebene Kommunikation vereinfacht dargestellt, sodass dann mehrere ROS Nodes mit dem Browser interagieren können.
+In der Abbildung \ref{fig:rosbridge_chain} wird die eben beschriebene Kommunikation vereinfacht dargestellt, sodass nun mehrere ROS Nodes mit dem Browser interagieren können.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{imgs/web/rosbridge_chain.png}
