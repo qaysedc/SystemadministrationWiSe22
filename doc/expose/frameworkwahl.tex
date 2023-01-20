@@ -8,26 +8,25 @@
     
     Zur Auswahl standen uns mehrere Frontend-Frameworks, zur Umsetzung unserer Roboter-Orchestrierungssoftware, zur Verfügung. Das erste und wichtigste Kriterium war es hier eine Schnittstelle zu ROS2 zu bekommen, um verschiedenste Topics senden (publish) und empfangen (subscriben) zu können. 
 
-    Außerdem wollten wir die Webanwendung in einer der bekannteren Webframeworks wie React oder Vue.js umsetzten. Hier stand kein Favorit der beiden im Vorfeld fest, sowie auch wenig bis keine Vorerfahrung. Wie entschieden uns hier für das React Framework, da wir es für sinnvoll hielten, unser Wissens-Repertoire diesbezüglich auch zu erweitern. Ebenso gibt es im Netz mehr Hilfestellungen zu React als zu Vue.js, was bei so einer speziellen Aufgabe wie einer Schnittstelle mit ROS2, schlussendlich zum Vorteil tragen kann. 
+    Außerdem wollten wir die Webanwendung in einer der bekannteren Webframeworks wie React oder Vue.js umsetzten. Hier stand kein Favorit der beiden im Vorfeld fest, sowie auch wenig bis keine Vorerfahrung. Wie entschieden uns hier für das React Framework, da wir es für sinnvoll hielten, unser Wissens-Repertoire diesbezüglich auch zu erweitern. Ebenso gibt es im Netz mehr Hilfestellungen zu React als zu Vue.js, was bei so einer speziellen Aufgabe wie einer Schnittstelle mit ROS2, schlussendlich von größerem Vorteil ist. 
 
     Nach etwas Recherche fanden wir die \cite[React-ROS]{reactrospackage} Schnittstelle die im npm-Paketmanager zur Verfügung gestellt wurde.
     %\begin{lstlisting}
     %    https://www.npmjs.com/package/react-ros 
     %\end{lstlisting}
 
-    Problem bei diesem Paket war es, das es nicht mit der aktuellen React Version (18) kompatibel war und die Entwicklung hierzu wohl auch schon eingestellt wurde. Man findet auch kaum Erklärungen hierzu, weshalb wir es mit diesem Paket nicht zum laufen bekommen haben und uns eine andere Möglichkeit überlegt haben.
+    Problem bei diesem Paket war es, das es nicht mit der aktuellen React Version (18) kompatibel war und die Entwicklung hierzu wohl auch schon eingestellt wurde. Man findet auch kaum Erklärungen hierzu, weshalb wir uns nach anderen Möglichkeiten umgesehen haben.
 
     Doch wenn man etwas weiter recherchiert stößt man sehr schnell auf die \cite[roslibjs]{roslibjs_robotwebtools} Bibliothek, auf die auch das vorher erwähnte Paket aufbaute. 
     %\begin{lstlisting}
     %    https://github.com/RobotWebTools/roslibjs 
     %\end{lstlisting}
-    
-    Diese basiert auf Javascript und verwendet Websockets um sich mit der \cite[rosbridge]{rosbridgepackage} zu verbinden und somit Funktionen wie publishen, subscriben, service calls und vieles mehr zur Verfügung stellt. Die \textit{rosbridge} ist ein ROS Paket, welches eine JSON-API zu ROS-Funktionalitäten für nicht ROS-Programme zur Verfügung stellt.
+    roslibjs basiert auf Javascript und verwendet Websockets um sich mit der \cite[rosbridge]{rosbridgepackage} zu verbinden und somit Funktionen wie publishen, subscriben, service calls und vieles mehr zur Verfügung stellt. Die \textit{rosbridge} ist ein ROS Paket, welches eine JSON-API zu ROS-Funktionalitäten für nicht ROS-Programme zur Verfügung stellt.
 
     % TODO: Punkt später verlinken
     Auch diese Bibliothek ist mittlerweile schon etwas älter, wird aber trotzdem noch in sehr vielen Projekten verwendet, weshalb wir uns auch für diese Option entschieden. Auch haben wir zu diesem Zeitpunkt keine andere akzeptable Alternative gefunden (hierzu später im Punk zu \hyperlink{rosboard-target}{rosboard} mehr), weshalb wir uns für einen Prototypen mit der \textit{roslibjs} Bibliothek entschieden. 
 
-    Um unserer Anwendung ebenso einen modernen Look zu verpassen, beschlossen wir eine UI-Komponentenbibliothek zu verwenden. Auch hier standen uns mehrere Optionen zur Auswahl. Zu den Beliebtesten und Bekanntesten zählen hier \href{https://mui.com}{Material-UI (MUI)}, \href{https://ant.design}{Ant Design (AntD)} und \href{https://react-bootstrap.github.io}{React Bootstrap}. Die Entscheidung fiel uns hier sehr leicht, da schon Erfahrungen im Standard-HTML Bootstrap Framework bestanden, weshalb wir hier auf eine schnellere Einarbeitung in das React Bootstrap Framework hofften.
+    Um unserer Anwendung ebenso ein modernes UI zu geben, beschlossen wir eine UI-Komponentenbibliothek zu verwenden. Auch hier standen uns mehrere Optionen zur Auswahl. Zu den Beliebtesten und Bekanntesten zählen hier \href{https://mui.com}{Material-UI (MUI)}, \href{https://ant.design}{Ant Design (AntD)} und \href{https://react-bootstrap.github.io}{React Bootstrap}. Die Entscheidung fiel uns hier sehr leicht, da schon Erfahrungen im Standard-HTML Bootstrap Framework bestanden, weshalb wir hier auf eine schnellere Einarbeitung in das React Bootstrap Framework hofften.
 
     Nun zusammengefasst verwenden wir:
     \begin{itemize}
