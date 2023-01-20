@@ -1,11 +1,54 @@
 \begin{flushleft}
     \textit{Technologischer Standpunkt Software:}\\
-    WEBROS TODO
     ROS bietet bereits ein starkes und recht einfach nutzbares Framework, allerdings vermisst man eine 
     schöne und einfach bedienbare "graphische" Oberfläche.
     Es existieren kleinere Projekte welche sich dieser Frontend entwicklung annehmen. 
     Allerdings hat uns keines dieser Projekte zufrieden gestellt. 
     Vor allem was die Orchestrierungsmöglichkeit mehrerer Roboter angeht.
+
+    \begin{description}
+        \item[Robotik:]\hfill\\
+        \input{robotic.tex}
+        \item[ROS:]\hfill\\
+        Der Kern von ROS besteht aus Interfaces, genannt ROS-Graph, die eine anonymisierte und standardisierte Interprozesskommunikation ermöglichen.
+        Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren.
+        Auf einem 'topic' wird immer dieselbe 'message' mit einem definierten Datentyp von Nodes verbreitet. 
+        Für das Verbreiten und Empfangen von Messages müssen die Nodes 'publisher' und 'subscriber' implementieren.
+        In Abbildung \ref{fig:ros_graph} kann man einen ROS-Graph sehen, der aus zwei Nodes besteht, die über ein Topic miteinander kommunizieren.
+        In diesem Fall gibt es einen publisher der Nachrichten sendet und einen subscriber der Nachrichten empfangen kann.
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/graph_2_nodes_with_topic.png}
+            \caption{Beispiel ROS Graph}
+            \label{fig:ros_graph}%
+        \end{figure}
+
+        Des weiteren gibt es noch viele Tools, die beispielsweise Daten visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
+        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als mehr als ein Framework angesehen wird und den Titel 'Operating-System' im Namen trägt.
+
+        Es gibt eine ältere Version von ROS die einfach nur ROS genannt wird und eine neuere Version namens ROS2.
+        Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet über den die Kommunikation abläuft und ROS2 einen dezentralen Ansatz verfolgt.
+        
+        ROS2 baut auf dem Data-Distribution Service Standard von OMG auf. 
+        Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt mit der eine Peer-to-Peer-Kommunikation auf Basis von UDP ermöglicht wird.
+
+        \item[Micro-ROS]\hfill\\
+        Micro-ROS ist eine Kombination von einem RTOS, einer Client-Bibliothek, einer Middleware und einem sogenannten ROS2 Agent, 
+        die Mikrocontroller möglichst effizient in das ROS-Oekosystem einbinden soll.
+        
+        Mit Micro-ROS ist es nicht möglich ROS-messages direkt im Netzwerk zu versenden und mit anderen Teilnehmern direkt in Verbindung zu stehen.
+        Die dafür benötigte Middleware würde zu viele Ressourcen auf einem Mikrocontroller verbrauchen. 
+        Stattdessen gibt es einen sogenannten ROS-Agent, mit dem sich der Mikrocontroller mit Hilfe einer für Mikrocontroller optimierten Middleware verbindet.
+        Der ROS-Agent ist dann im Prinzip eine Brücke zwischen den verschiedenen Middlewares, wie man in Abbildung \ref{fig:micro-ros-architecture} sehen kann. Entsprechend muss der Agent auch auf leistungsfähigerer Hardware ausgeführt werden.    
+        \cite{micro_ros_concepts}
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/micro-ROS_architecture.png}
+            \caption{Micro-ROS Architektur}
+            \label{fig:micro-ros-architecture}%
+        \end{figure}
+    \end{description}
 \end{flushleft}
 
 \begin{flushleft}
@@ -16,6 +59,6 @@
     Viele der bereits vorhandenen Roboter sind entweder zu Groß und teuer oder viel zu klein und deshalb ebenfalls nicht 
     gut für eine demonstration geeignet. Unter anderem wollen wir das unser Roboter den Vorteil bietet weitestgehend
     3D-gedruckt zu sein.
-    Die ETH Zürich (LINK?) hat bereits eine kleine Zusammenfassung über die wichtigsten Antriebsarten mobiler Roboter zur Verfügung gestellt.
+    Die ETH Zürich (TODO LINK?) hat bereits eine kleine Zusammenfassung über die wichtigsten Antriebsarten mobiler Roboter zur Verfügung gestellt.
     Für unser Projekt haben wir uns vorerst für einen simplen Diferentialantrieb entschieden. 
 \end{flushleft}
