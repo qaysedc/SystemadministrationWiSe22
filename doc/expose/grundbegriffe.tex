@@ -10,6 +10,15 @@
         Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren.
         Auf einem 'topic' wird immer dieselbe 'message' mit einem definierten Datentyp von Nodes verbreitet. 
         Für das Verbreiten und Empfangen von Messages müssen die Nodes 'publisher' und 'subscriber' implementieren.
+        In Abbildung \ref{fig:ros_graph} kann man einen ROS-Graph sehen, der aus zwei Nodes besteht, die über ein Topic miteinander kommunizieren.
+        In diesem Fall gibt es einen publisher der Nachrichten sendet und einen subscriber der Nachrichten empfangen kann.
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/graph_2_nodes_with_topic.png}
+            \caption{Beispiel ROS Graph}
+            \label{fig:ros_graph}%
+        \end{figure}
 
         Des weiteren gibt es noch viele Tools, die beispielsweise Daten visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
         Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als mehr als ein Framework angesehen wird und den Titel 'Operating-System' im Namen trägt.
@@ -18,7 +27,7 @@
         Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet über den die Kommunikation abläuft und ROS2 einen dezentralen Ansatz verfolgt.
         
         ROS2 baut auf dem Data-Distribution Service Standard von OMG auf. 
-        Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt.
+        Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt mit der eine Peer-to-Peer-Kommunikation auf Basis von UDP ermöglicht wird.
 
 
         \item[React:]\hfill\\
@@ -30,17 +39,21 @@
 
         \item[ESP32:]\hfill\\
         ESP32 bezeichnet eine Microntroller Familie auf Basis der ARM Architektur.
-        Ursprünglich wurde der ESP32 von Expresif entworfen und gefertigt.
+        Ursprünglich wurde der ESP32 von Espressif entworfen und gefertigt.
 
         \item[RaspberryPi:]\hfill\\
         
+        \item[ESP-IDF:]\hfill\\
+        ESP-IDF steht für Espressif IOT Development Framework. Das ist ein Framework mit dessen Hilfe man ESP-Socs programmieren kann. \cite{esp_idf}
+        
         \item[Toolchain:] \hfill\\
-        Als Toolchain wird die Kombination von Micro-ROS und ESP-IDF bezeichnet.
-        Mit Hilfe dieser beiden Frameworks wurde die Firmware für unseren Roboter programmiert und kompiliert.
+        Eine Toolchain ist eine Kombination mehrerer Softwaretools um komplexe Aufgaben in der Software Entwicklung durchzuführen.
+        In speziellen Fall dieser Arbeit ist es eine Kombination von Micro-ROS und ESP-IDF.
+        Mit Hilfe dieser Tools wird die Software für den Roboter cross-compiliert, geflasht und konfiguriert.
 
         \item[RTOS]\hfill\\
         Abkürzung für Real Time Operating System. 
-        In diesem Projekt wurde in erster Linie das RTOS 'FreeRTOS' verwendet, das für die Verwendung mit Mikrocontrollern optimiert ist.
+        In diesem Projekt wurde in erster Linie das RTOS 'FreeRTOS' verwendet, das für die Verwendung mit Mikrocontrollern optimiert ist. \cite{freertos}
         
         \item[Micro-ROS]\hfill\\
         Micro-ROS ist eine Kombination von einem RTOS, einer Client-Bibliothek, einer Middleware und einem sogenannten ROS2 Agent, 
@@ -49,8 +62,8 @@
         Mit Micro-ROS ist es nicht möglich ROS-messages direkt im Netzwerk zu versenden und mit anderen Teilnehmern direkt in Verbindung zu stehen.
         Die dafür benötigte Middleware würde zu viele Ressourcen auf einem Mikrocontroller verbrauchen. 
         Stattdessen gibt es einen sogenannten ROS-Agent, mit dem sich der Mikrocontroller mit Hilfe einer für Mikrocontroller optimierten Middleware verbindet.
-        Der ROS-Agent ist dann im Prinzip eine Brücke zwischen den verschiedenen Middlewares. Entsprechend muss der Agent auch auf leistungsfähigerer Hardware ausgeführt werden.    
-
+        Der ROS-Agent ist dann im Prinzip eine Brücke zwischen den verschiedenen Middlewares, wie man in Abbildung \ref{fig:micro-ros-architecture} sehen kann. Entsprechend muss der Agent auch auf leistungsfähigerer Hardware ausgeführt werden.    
+        \cite{micro_ros_concepts}
         \begin{figure}[h!]
             \centering
             \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/micro-ROS_architecture.png}
@@ -58,9 +71,7 @@
             \label{fig:micro-ros-architecture}%
         \end{figure}
 
-        \item[ESP-IDF]\hfill\\
-        ESP-IDF steht für Espressif IOT Development Framework. Das ist ein Framework mit dessen Hilfe man ESP-Socs programmieren kann.
-        Das betrifft in dem Fall dann auch den ESP32.
+        
 
         \end{description}
 \end{flushleft}
