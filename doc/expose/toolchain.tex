@@ -3,11 +3,12 @@
 
     Um Programme auf dem ESP32 ausführen zu können müssen sie zuvor crosscompilt und auf den Speicher des Microcontrollers geflasht werden.
     Für das Crosscompilen von Programmen, die das Micro-ROS Framework verwenden wird eine Pipeline empfohlen, die aus 4 Teilen besteht.
-
-    1. ROS
-    2. Micro-ROS
-    3. RTOS
-    4. ESP-IDF
+    \begin{enumerate}
+        \item ROS
+        \item Micro-ROS
+        \item RTOS
+        \item ESP-IDF
+    \end{enumerate}
 
     Zu Grunde liegt ersteinmal die ROS2 Compilierungspipeline welche colcon verwendet.
     Darauf aufbauend folgt die Micro-ROS Pipeline. In dieser Pipeline wird die Crosscompilierung für das entsprechende Realtime Operating System übernommen.
@@ -22,7 +23,7 @@
     da es von Docker als Best-Practice empfohlen wird um ungewollte Veränderungen zu verhindern.
 
 
-    Nach dem Aufsetzen des Users wird die Micro-ROS Pipeline heruntergeladen und mit HIlfe von mitgelieferten Skripten installiert.
+    Nach dem Aufsetzen des Users wird die Micro-ROS Pipeline heruntergeladen und mit Hilfe von mitgelieferten Skripten installiert.
 
     Nach der Installation müssen noch verschiedene Einstellungen vorgenommen werden. So ist es in eine ersten Schritt notwendig das passende RTOS, in diesem Fall "freertos",
     und den Mikrocontroller zu spezifizieren. Anschließend werden Einstellungen wie beispielsweise die Zugangsdaten für das WLAN-Netzwerk eingetragen.
