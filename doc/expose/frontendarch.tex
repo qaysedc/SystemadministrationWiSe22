@@ -18,7 +18,7 @@ Installation und Importierung in das aktuelle Projekt wird in [\ref{frontend_ins
 %     import ROSLIB from 'roslib';
 % \end{lstlisting}
 
-Bezüglich der Architektur, bzw. dem Aufbau der Website, haben wir uns an die standardmäßige Vorgehensweise in React gehalten, in dem man die Seite in Komponenten aufteilt und diese so an mehreren Stellen wieder verwenden kann. Dafür haben wir einen extra Verzeichnis \textit{/components} im \textit{/src} Verzeichnis angelegt, sowie eines mit \textit{/pages} für die jeweiligen Seiten. Diese werden in der \textit{App.js} Datei mit dem \textit{react-router-dom} Paket geroutet.
+Bezüglich der Architektur, bzw. dem Aufbau der Website, haben wir uns an die standardmäßige Vorgehensweise in React gehalten, in dem man die Seite in Komponenten aufteilt und diese so an mehreren Stellen wieder verwenden kann. Dafür haben wir ein extra Verzeichnis \textit{/components} im \textit{/src} Verzeichnis angelegt, sowie eines mit \textit{/pages} für die jeweiligen Seiten. Diese werden in der \textit{App.js} Datei mit dem \textit{react-router-dom} Paket geroutet.
 
 
 Wir haben uns für eine linksbündige Navigationsleiste entschieden, da diese mehr zu einem Dashboard und einer Konfigurationsseite passt. Auch hier wurde im ersten Moment nicht viel Wert auf ein besonders ausgefallenes Design gelegt. Eine schwarze Navigationsleiste mit einem aufklappbarem Burgermenü war hier für uns ausreichend. 
@@ -36,7 +36,7 @@ Ebenso unterscheidet diese sich auch von der Implementierung, da diese auf ganze
 Um nun die Vorteile von React in unserer Anwendung sinnvoll zu nutzen, unterteilten wir das Connection-Handling, Publishen, Subscriben oder auch beispielsweise die Auflistung der aktuellen Topics, in eigene Komponenten auf.
 So konnten wir mit Hilfe von useState-Hooks und useContext-Hooks, eine Singlepage-Application bauen, die mehrere Verbindungen zu ROS-Instanzen verwalten kann.
 Für jede offene Verbindung wird ein neues ROSLIB-Objekt angelegt und in ein Array gespeichert.
-So kann für jedes dieser Objekte eine neue eigene Unterseite erstellt werden, um mit dem ROS-Topics zu interagieren. Diese werden ebenso im Dashboard in einer Tabelle ausgegeben (siehe Abbildung \ref{fig:ros_conn}).
+So kann für jedes dieser Objekte eine neue eigene Unterseite erstellt werden, um mit den ROS-Topics zu interagieren. Diese werden ebenso im Dashboard in einer Tabelle ausgegeben (siehe Abbildung \ref{fig:ros_conn}).
 
 \begin{figure}[h!]
     \centering
@@ -46,9 +46,10 @@ So kann für jedes dieser Objekte eine neue eigene Unterseite erstellt werden, u
 \end{figure}
 
 Auf diesen nun generierten Topics-Unterseiten des jeweiligen Roboters, können nun Funktionen darauf angewendet werden.
-Für das Publishen auf Topics haben wir uns nur was das \textit{/cmd\_vel} Topic beschränkt, was einen recht simplem Grund hatte.
-Zum Publishen wir natürlich auch der Message-Type der Nachricht benötigt, um dann dynamisch auf jedes beliebige Topic senden zu können, müsste der User ebenso auch den entsprechenden Aufbau der Nachricht haben und diese richtig in ein Textfeld eingeben.
-Dies wäre sowohl aus User Sicht sehr umständlich und fehleranfällig, da die einzelnen Werte nicht mehr in Textfeldern hätten abgefragt werden können. 
+Für das Publishen auf Topics haben wir uns nur auf das \textit{/cmd\_vel} Topic beschränkt, was einen recht simplem Grund hatte.
+Denn zum Publishen wird natürlich auch der Message-Type der Nachricht benötigt.
+Um dann dynamisch auf jedes beliebige Topic senden zu können, müsste der User ebenso, auch den entsprechenden Aufbau der Nachricht haben und diese richtig in ein Textfeld eingeben.
+Dies wäre sowohl aus User Sicht sehr umständlich und fehleranfällig, da die einzelnen Werte nicht mehr in simplen vordefinierten Textfeldern, sondern in freien Textareas, hätten abgefragt werden müssen. 
 Da das \textit{/cmd\_vel} Topic, welches für die Fortbewegung und Lenkung des Roboters zuständig ist, unser definitiv wichtigstes Topic war, beließen wir es dabei.
 Dieser Nachrichtentyp enthält drei linear- und drei angular-Werte:
 \begin{lstlisting}
@@ -65,10 +66,10 @@ Dieser Nachrichtentyp enthält drei linear- und drei angular-Werte:
         }
     }
 \end{lstlisting}
-Wobei für die Fortbewegung bei Robotern, die sich auf dem Boden mit Rädern bewegen, nur die x-Werte in linear und angular interessant sind.
+Wobei für die Fortbewegung bei Robotern, die sich auf dem Boden mit Rädern bewegen, nur die x-Werte in \textit{linear} und \textit{angular} interessant sind.
 Hierfür haben wir im Frontend zwei Optionen entwickelt. 
 Zum einen war es uns wichtig fest definierte Werte senden zu können, wofür wir uns für einzelne Textfelder pro Wert entschieden.
-Diese wurden dann im Code auf das entsprechende Message (Twist) Format gebracht und an die \textit{rosbridge} gesendet.
+Diese wurden dann im Code auf das entsprechende Message Format (Twist) gebracht und an die \textit{rosbridge} gesendet.
 Links in Abbildung \ref{fig:web_publish} sind die Textfelder, mit den jeweiligen Buttons zum Senden und Rücksetzen der Nachricht.
 Bei Reset wird einfach eine neue Nachricht geschickt, die alle Werte wieder auf Null setzt.
 
@@ -79,7 +80,7 @@ Bei Reset wird einfach eine neue Nachricht geschickt, die alle Werte wieder auf 
     \label{fig:web_publish}%
 \end{figure}
 
-Ebenso dachten wir uns auch, dass es eine gute Funktionalität wäre, wenn man den Roboter über Tastatur-Eingabe steuern könne.
+Ebenso dachten wir uns auch, dass es eine gute Funktionalität wäre, wenn man den Roboter über Tastatur-Eingabe steuern könnte.
 So erstellten wir noch ein Textfeld, welches beim Fokussieren die Tastenfelder einließt.
 Dies konnte mit dem Event-Handler \textit{onKeyPress} in React umgesetzt werden.
 Durch Gedrückthalten der Tasten W, A, S, D, wird der entsprechende linear- oder angular- x-Wert inkrementiert, bzw. dekrementiert.
