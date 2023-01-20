@@ -1,7 +1,8 @@
 \begin{flushleft}
     \textit{Technologischer Standpunkt Software:}\\
+    (TODO React???)
     ROS bietet bereits ein starkes und recht einfach nutzbares Framework, allerdings vermisst man eine 
-    schöne und einfach bedienbare "graphische" Oberfläche.
+    schöne und einfach bedienbare graphische Oberfläche.
     Es existieren kleinere Projekte welche sich dieser Frontend entwicklung annehmen. 
     Allerdings hat uns keines dieser Projekte zufrieden gestellt. 
     Vor allem was die Orchestrierungsmöglichkeit mehrerer Roboter angeht.
@@ -9,11 +10,13 @@
     \begin{description}
         \item[Robotik:]\hfill\\
         \input{robotic.tex}
+
         \item[ROS:]\hfill\\
+        ROS steht für Robot Operating System. Das "Operating System" ist kein richtiges Betriebssystem sondern eine Sammlung von Softwarebibliotheken, die es einem vereinfachen Robotiksysteme zu bauen.
         Der Kern von ROS besteht aus Interfaces, genannt ROS-Graph, die eine anonymisierte und standardisierte Interprozesskommunikation ermöglichen.
-        Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren.
-        Auf einem 'topic' wird immer dieselbe 'message' mit einem definierten Datentyp von Nodes verbreitet. 
-        Für das Verbreiten und Empfangen von Messages müssen die Nodes 'publisher' und 'subscriber' implementieren.
+        Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren. 'Nodes' werden als Prozesse auf einem oder verschiedenen Computern ausgeführt.
+        Auf einem 'topic' wird immer dieselbe 'message' mit einem definierten Datentyp von 'nodes' verbreitet. 
+        Für das Verbreiten und Empfangen von Messages müssen die Nodes 'publisher' und 'subscriber'-Interfaces implementieren.
         In Abbildung \ref{fig:ros_graph} kann man einen ROS-Graph sehen, der aus zwei Nodes besteht, die über ein Topic miteinander kommunizieren.
         In diesem Fall gibt es einen publisher der Nachrichten sendet und einen subscriber der Nachrichten empfangen kann.
 
@@ -24,14 +27,16 @@
             \label{fig:ros_graph}%
         \end{figure}
 
-        Des weiteren gibt es noch viele Tools, die beispielsweise Daten visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
-        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als mehr als ein Framework angesehen wird und den Titel 'Operating-System' im Namen trägt.
+        Des weiteren gibt es noch viele Tools, die wie zum Beispiel in Abbildung \ref{fig:ros_graph} den ROS-Graph visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
+        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als mehr als ein Framework angesehen wird.
 
         Es gibt eine ältere Version von ROS die einfach nur ROS genannt wird und eine neuere Version namens ROS2.
-        Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet über den die Kommunikation abläuft und ROS2 einen dezentralen Ansatz verfolgt.
+        Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet und ROS2 einen dezentralen Ansatz verfolgt.
+        Der 'ROS-Master' besteht im Kern aus einer Datenbank in der die Teilnehmer der verschiedenen Topics aufgelistet werden und in der die Teilnehmer des Netzwerks ihre entsprechenden Partner finden können, mit denen sie eine TCP-Verbindung aufbauen.
         
         ROS2 baut auf dem Data-Distribution Service Standard von OMG auf. 
-        Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt mit der eine Peer-to-Peer-Kommunikation auf Basis von UDP ermöglicht wird.
+        Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt und somit sehr ähnlich zu dem ROS-Graphen ist. 
+        Die Middleware stellt die Peer-to-Peer Funktionalität auf Basis von UDP zur Verfügung.
 
         \item[Micro-ROS]\hfill\\
         Micro-ROS ist eine Kombination von einem RTOS, einer Client-Bibliothek, einer Middleware und einem sogenannten ROS2 Agent, 
