@@ -35,20 +35,19 @@
         Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als weitaus mehr als ein Framework angesehen wird.
 
         Es gibt eine ältere Version von ROS die einfach nur ROS genannt wird und eine neuere Version namens ROS2.
-        Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet und ROS2 einen dezentralen Ansatz verfolgt.
-        Der 'ROS-Master' besteht im Kern aus einer Datenbank in der die Teilnehmer der verschiedenen Topics aufgelistet werden und in der die Teilnehmer des Netzwerks ihre entsprechenden Partner finden können, mit denen sie eine Verbindung aufbauen.
-        
+        Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet und ROS2 einen dezentralen Ansatz verfolgt, wie in den Abbildungen \ref{fig:ros1_concept_graph} und \ref{fig:ros2_concept_graph} schematisch dargestellt ist.
+        Der 'ROS-Master' besteht im Kern aus einer Datenbank in der die Teilnehmer der verschiedenen Topics aufgelistet werden und in der die Teilnehmer des Netzwerks ihre entsprechenden Partner finden können, mit denen sie eine Verbindung aufbauen.        
         \begin{figure}[h!]
             \centering
             \includegraphics[width=0.8\textwidth]{imgs/ROS1_concept_graph.png}
-            \caption{ROS1 Graph}
+            \caption{ROS1 Konzept}
             \label{fig:ros1_concept_graph}%
         \end{figure}
 
         \begin{figure}[h!]
             \centering
             \includegraphics[width=0.8\textwidth]{imgs/ROS2_concept_graph.png}
-            \caption{ROS1 Graph}
+            \caption{ROS2 Konzept}
             \label{fig:ros2_concept_graph}%
         \end{figure}
 
@@ -80,7 +79,7 @@
     und deren verschiedensten Antriebskinematiken.
     Für unser Projekt werden wir allerdings eine eigene Roboter Platform designen und 3D-Drucken.
     Viele der bereits vorhandenen Roboter sind entweder zu Groß und teuer oder viel zu klein und deshalb ebenfalls nicht 
-    gut für eine demonstration geeignet. Unter anderem wollen wir das unser Roboter den Vorteil bietet weitestgehend
+    gut für eine Demonstration geeignet. Unter anderem wollen wir das unser Roboter den Vorteil bietet weitestgehend
     3D-gedruckt zu sein.
     Die Universität Brüssel \cite{brussel_kristof_goris} hat bereits eine kleine Zusammenfassung über die wichtigsten Antriebsarten mobiler Roboter zur Verfügung gestellt.
     Für unser Projekt haben wir uns vorerst für einen simplen Differentialantrieb entschieden. 
