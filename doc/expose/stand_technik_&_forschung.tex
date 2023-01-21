@@ -34,6 +34,20 @@
         Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet und ROS2 einen dezentralen Ansatz verfolgt.
         Der 'ROS-Master' besteht im Kern aus einer Datenbank in der die Teilnehmer der verschiedenen Topics aufgelistet werden und in der die Teilnehmer des Netzwerks ihre entsprechenden Partner finden können, mit denen sie eine TCP-Verbindung aufbauen.
         
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imgs/ROS1_concept_graph.png}
+            \caption{ROS1 Graph}
+            \label{fig:ros1_concept_graph}%
+        \end{figure}
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{imgs/ROS2_concept_graph.png}
+            \caption{ROS1 Graph}
+            \label{fig:ros2_concept_graph}%
+        \end{figure}
+
         ROS2 baut auf dem Data-Distribution Service Standard von OMG auf. 
         Das ist eine Spezifikation für eine Middleware, welche ein 'Data-Centric Subscriber-Publisher (DCPS)'-Modell beschreibt und somit sehr ähnlich zu dem ROS-Graphen ist. 
         Die Middleware stellt die Peer-to-Peer Funktionalität auf Basis von UDP zur Verfügung.
