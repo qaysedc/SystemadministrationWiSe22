@@ -15,7 +15,7 @@
     Schließlich wird noch der Executor als letzter Teil der Initialisierung der Micro-Ros Software gestartet.
     Es werden der Allocator und Node für die Initialisierung bereitgestellt und die Callbacks des Subscribers und des Timers zum Executor hinzugefügt.
     Der Executor ist dafür zuständig die Callbacks von Subscribern oder Timern mit Threads des unterliegenden Betriebssystems auszuführen.
-    Er ist somit auch dafür zuständig die Nachrichten von der unterliegenden Middleware entgegen zu nehmen und an den entsprechenden Subscriber weiterzuleiten.\\
+    Er ist somit auch dafür zuständig die Nachrichten von der unterliegenden Middleware entgegen zu nehmen und an den entsprechenden Subscriber weiterzuleiten, wie man ebenfalls in Abbildung \ref{fig:ros2_executor} sehen kann.\\
 
     \begin{figure}[h!]
         \centering
