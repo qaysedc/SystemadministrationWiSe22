@@ -5,16 +5,16 @@
     Der Roboter ist damit in der Lage gesteuert zu werden.\\
 
     Wie bereits zu Anfang beschrieben folgt als nächstes die Konfiguration des ROS-Nodes.
-    Es werden zuerst die verschiedene Hilfskonstrukte wie ein Allocator erzeugt. Als nächstes wird der Node initialisiert.
-    Daraufhin wird ein Subscriber erstellt, der auf 'Twist' messages auf dem Topic 'cmd\_vel' reagiert. 
-    Die Twist messages sind entsprechend der Beschreibung in \ref{sec:twistMessage}. \newline
+    Es werden zuerst die verschiedenen Hilfskonstrukte wie ein Allocator erzeugt. Als nächstes wird der Node initialisiert.
+    Daraufhin wird ein Subscriber erstellt, der auf 'Twist' Messages auf dem Topic 'cmd\_vel' reagiert. 
+    Die Twist Messages sind entsprechend der Beschreibung in \ref{sec:twistMessage}. \newline
 
 
     Nach dem Subscriber wird ein Timer erstellt. Mit Hilfe des Timers sollen periodisch die empfangenen Werte des Subscribers in PWM-Signale umgewandelt werden.
     
     Schließlich wird noch der Executor als letzter Teil der Initialisierung der Micro-Ros Software gestartet.
     Es werden der Allocator und Node für die Initialisierung bereitgestellt und die Callbacks des Subscribers und des Timers zum Executor hinzugefügt.
-    Der Executor ist dafür zuständig die callbacks von Subscribern oder Timern mit Threads des unterliegenden Betriebssystems auszuführen.
+    Der Executor ist dafür zuständig die Callbacks von Subscribern oder Timern mit Threads des unterliegenden Betriebssystems auszuführen.
     Er ist somit auch dafür zuständig die Nachrichten von der unterliegenden Middleware entgegen zu nehmen und an den entsprechenden Subscriber weiterzuleiten.\\
 
     \begin{figure}[h!]
@@ -28,19 +28,19 @@
     Damit ist die Initialisierung des Roboters abgeschlossen und er ist nun einsatzbereit.\\
 
     Wenn eine Nachricht empfangen wird, wird sie in einer globalen Variablen gespeichert.
-    Auf diese Variable greift die callback des Timers zu und führt wenn nötig die entsprechenden Änderungen durch.\\
+    Auf diese Variable greift die Callback des Timers zu und führt wenn nötig die entsprechenden Änderungen durch.\\
 
     Zuerst werden die empfangenen Werte auf einen Bereich von -1 und +1 beschränkt um eine spätere Abbildung auf Registerwerte möglich zu machen.
 
     Danach werden die linearen und angularen Teile der Nachricht in Werte für die PWM-Channels umgewandelt.
-    Dafür wird ein vorzeichenbehafteter Pythagoras aus den Werten der singularen und angularen Richtung berechnet.
+    Dafür wird ein vorzeichenbehafteter Pythagoras aus den Werten der linearen und angularen Richtung berechnet.
     Durch abziehen bzw. addieren der linearen und angularen Teile je nach Radseite wird so die Message in Werte umgewandelt, mit denen der Roboter gesteuert werden kann.
     Ein Code-Beispiel für diese Berechnungen befindet sich in \ref{robot_code_snippet}.\newline
 
     Anschließend wird die Geschwindigkeit für die einzelnen Räder von den Eingabewerten zwischen -1 und 1 auf den Wertebereich der PWM-Channels abgebildet.
     Dabei gibt es einen Maximal und einen Minimalwert, mit dem man indirekt die Spannungen bestimmen kann, die man an den Motor anlegt.
     Der Maximalwert ist dabei nicht von so großer Bedeutung wie der Minimalwert, da die maximale Spannung, sowieso durch die Hardware bereits limitiert ist.
-    Der Minimalwert muss allerdings durch Experimente herausgefunden werden, denn wenn man eine zu geringe Spannung an den Motor anlegt, die ihn nicht in Bewegung versetzt kann das den Motor beschädigen.
+    Der Minimalwert muss allerdings durch Experimente herausgefunden werden, denn wenn man eine zu geringe Spannung an den Motor anlegt, die ihn nicht in Bewegung versetzt, kann das den Motor beschädigen.
 
     Zum Schluss werden die entsprechenden Registerwerte für die PWM-Signale noch gesetzt.
 
