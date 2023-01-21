@@ -1,0 +1,20 @@
+\begin{flushleft}
+\label{robot_code_snippet}    
+
+\begin{lstlisting}
+    double linear_part = sign_d(linear) * linear * linear;
+    double angular_part = sign_d(angular) * angular * angular;
+
+    // LEFT WHEEL
+    double left_movement = linear_part - angular_part;
+    int left_direction = (int)sign_d(left_movement);
+    int left_speed = calc_pwm_speed(left_movement);
+
+    // RIGHT WHEEL
+    double right_movement = linear_part + angular_part;
+    int right_direction = (int)(-1.0 * sign_d(right_movement));
+    int right_speed = calc_pwm_speed(right_movement);
+
+\end{lstlisting}
+
+\end{flushleft}

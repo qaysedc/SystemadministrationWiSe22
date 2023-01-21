@@ -52,6 +52,8 @@ Um dann dynamisch auf jedes beliebige Topic senden zu können, müsste der User 
 Dies wäre sowohl aus User Sicht sehr umständlich und fehleranfällig, da die einzelnen Werte nicht mehr in simplen vordefinierten Textfeldern, sondern in freien Textareas, hätten abgefragt werden müssen. 
 Da das \textit{/cmd\_vel} Topic, welches für die Fortbewegung und Lenkung des Roboters zuständig ist, unser definitiv wichtigstes Topic war, beließen wir es dabei.
 Dieser Nachrichtentyp enthält drei linear- und drei angular-Werte:
+
+\label{sec:twistMessage}
 \begin{lstlisting}
     twist = {
         linear: {
