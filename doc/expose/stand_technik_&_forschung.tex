@@ -1,20 +1,24 @@
 \begin{flushleft}
     \textit{Technologischer Standpunkt Software:}\\
-    (TODO React???)
     ROS bietet bereits ein starkes und recht einfach nutzbares Framework, allerdings vermisst man eine 
-    schöne und einfach bedienbare graphische Oberfläche.
+    schöne und einfach bedienbare grafische Oberfläche.
     Es existieren kleinere Projekte welche sich dieser Frontend entwicklung annehmen. 
     Allerdings hat uns keines dieser Projekte zufrieden gestellt. 
     Vor allem was die Orchestrierungsmöglichkeit mehrerer Roboter angeht.
 
     \begin{description}
         \item[Robotik:]\hfill\\
-        \input{robotic.tex}
+        Die Robotik beschäftigt sich mit der Entwicklung, Herstellung, Steuerung und dem Betrieb von Robotern.
+        Ein Roboter ist ein universell einsetzbarer Bewegungsautomat, der programmierbar ist und gegebenenfalls über Sensoren verfügt,
+        mit welchen er mit der phsyischen Welt interagieren kann.
+        Bei der Robotik handelt es sich um eine interdisziplinäre Wissenschaft, da sie Gebiete der Informatik, Maschinenbau, Elektronik und der Mathematik vereint. 
+        \cite{robotik_konradin}\\
+        Als eines des bekanntesten und meist verbreitetsten Frameworks zur Steuerung von Robotern ist ROS (Robot Operating System), auf das im Folgenden genauer eingegangen wird.
 
         \item[ROS:]\hfill\\
-        ROS steht für Robot Operating System. Das "Operating System" ist kein richtiges Betriebssystem sondern eine Sammlung von Softwarebibliotheken, die es einem vereinfachen Robotiksysteme zu bauen.
+        ROS steht für Robot Operating System. Das ``Operating System'' ist kein richtiges Betriebssystem sondern eine Sammlung von Softwarebibliotheken, die es ermöglichen einfach und schnell Robotiksysteme zu bauen.
         Der Kern von ROS besteht aus Interfaces, genannt ROS-Graph, die eine anonymisierte und standardisierte Interprozesskommunikation ermöglichen.
-        Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren. 'Nodes' werden als Prozesse auf einem oder verschiedenen Computern ausgeführt.
+        Dieser Graph ist ein Netzwerk aus 'nodes', welche über 'topics' miteinander kommunizieren. 'Nodes' werden als Prozesse auf einem oder mehreren verschiedenen Computern ausgeführt.
         Auf einem 'topic' wird immer dieselbe 'message' mit einem definierten Datentyp von 'nodes' verbreitet. 
         Für das Verbreiten und Empfangen von Messages müssen die Nodes 'publisher' und 'subscriber'-Interfaces implementieren.
         In Abbildung \ref{fig:ros_graph} kann man einen ROS-Graph sehen, der aus zwei Nodes besteht, die über ein Topic miteinander kommunizieren.
@@ -27,8 +31,8 @@
             \label{fig:ros_graph}%
         \end{figure}
 
-        Des weiteren gibt es noch viele Tools, die wie zum Beispiel in Abbildung \ref{fig:ros_graph} den ROS-Graph visualisieren können, und eine große Menge an Bibliotheken, welche Standard-Algorithmen der Robotik implementieren.
-        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als mehr als ein Framework angesehen wird.
+        Des weiteren gibt es noch viele Tools, die wie zum Beispiel in Abbildung \ref{fig:ros_graph} den ROS-Graph visualisieren können und eine große Menge an Bibliotheken welche Standard-Algorithmen der Robotik implementieren.
+        Diese Tools und Bibliotheken werden ebenfalls zu ROS gezählt weshalb ROS als weitaus mehr als ein Framework angesehen wird.
 
         Es gibt eine ältere Version von ROS die einfach nur ROS genannt wird und eine neuere Version namens ROS2.
         Der Hauptunterschied zwischen ROS und ROS2 ist, dass ROS einen zentralen Server, genannt 'ROS-Master' verwendet und ROS2 einen dezentralen Ansatz verfolgt.
@@ -61,12 +65,11 @@
         Stattdessen gibt es einen sogenannten ROS-Agent, mit dem sich der Mikrocontroller mit Hilfe einer für Mikrocontroller optimierten Middleware verbindet.
         Der ROS-Agent ist dann im Prinzip eine Brücke zwischen den verschiedenen Middlewares, wie man in Abbildung \ref{fig:micro-ros-architecture} sehen kann. Entsprechend muss der Agent auch auf leistungsfähigerer Hardware ausgeführt werden.    
         \cite{micro_ros_concepts}
-        \begin{figure}[h!]
-            \centering
-            \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/micro-ROS_architecture.png}
-            \caption{Micro-ROS Architektur}
-            \label{fig:micro-ros-architecture}%
-        \end{figure}
+
+        \includegraphics[width=0.8\textwidth]{imgs/Grundbegriffe/micro-ROS_architecture.png}
+        \captionof{figure}{Micro-ROS Architektur}
+        \label{fig:micro-ros-architecture}%
+            
     \end{description}
 \end{flushleft}
 
@@ -78,6 +81,6 @@
     Viele der bereits vorhandenen Roboter sind entweder zu Groß und teuer oder viel zu klein und deshalb ebenfalls nicht 
     gut für eine demonstration geeignet. Unter anderem wollen wir das unser Roboter den Vorteil bietet weitestgehend
     3D-gedruckt zu sein.
-    Die ETH Zürich (TODO LINK?) hat bereits eine kleine Zusammenfassung über die wichtigsten Antriebsarten mobiler Roboter zur Verfügung gestellt.
-    Für unser Projekt haben wir uns vorerst für einen simplen Diferentialantrieb entschieden. 
+    Die Universität Brüssel \cite{brussel_kristof_goris} hat bereits eine kleine Zusammenfassung über die wichtigsten Antriebsarten mobiler Roboter zur Verfügung gestellt.
+    Für unser Projekt haben wir uns vorerst für einen simplen Differentialantrieb entschieden. 
 \end{flushleft}

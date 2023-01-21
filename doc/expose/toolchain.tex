@@ -1,7 +1,7 @@
 \begin{flushleft}
 
 
-    Um Programme auf dem ESP32 ausführen zu können müssen sie zuvor crosscompilt und auf den Speicher des Mikrocontrollers geflasht werden.
+    Um Programme auf dem ESP32 ausführen zu können müssen sie zuvor crosscompiled und auf den Speicher des Mikrocontrollers geflasht werden.
     Für das Crosscompilen von Programmen, die das Micro-ROS Framework verwenden wird eine Pipeline empfohlen, die aus 4 Teilen besteht.
     \begin{enumerate}
         \item ROS
@@ -38,6 +38,6 @@
     in dem der Code des Roboters ist und ein anderer für das Verzeichnis \textit{/dev} in dem die Ports für das flashen des Mikrocontrollers sind.
 
     Es werden bind-mounts verwendet, um die Daten und Ports während der Entwicklung aktuell zu halten, damit der Container nicht ständig neu gestartet werden muss, wenn sich eine Datei ändert.
-    Das vereinfacht die Entwicklung deutlich, da der Container beim Ab- und Abstecken des Mikrocontrollers nicht neu gestartet werden muss. 
+    Das vereinfacht die Entwicklung deutlich, da der Container beim An- und Abstecken des Mikrocontrollers nicht neu gestartet werden muss. 
     
 \end{flushleft}
