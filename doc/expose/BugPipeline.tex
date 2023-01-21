@@ -2,7 +2,7 @@
     Beim Aufsetzen der Pipeline ist es mehrfach zu Problemen gekommen, die es notwendig gemacht haben, die Implementierung anzupassen.
 
     Zu Beginn wurde erst einmal mit Hilfe einer virtuellen Maschine ausprobiert, ob die Micro-ROS-Pipeline überhaupt funktioniert mit dem ESP32.
-    Das hat gut funktioniert, es hat sich aber herausgestellt, dass die Pipeline sehr viel Speicherplatz benötigt und sie relativ tief ins System eingreift. (TODO Beispiele)
+    Das hat gut funktioniert, es hat sich aber herausgestellt, dass die Pipeline sehr viel Speicherplatz benötigt und sie relativ tief ins System eingreift.
     
     Als nächstes sollte dann die Pipeline mittels Docker umgesetzt werden, um zum einen die Verwendung einer virtuellen Maschine zu vermeiden, aber trotzdem die Virtualisierung beizubehalten.
 
@@ -17,12 +17,12 @@
     Während dem Aufsetzen ist es zu einem Problem mit Docker-Desktop gekommen. Die ESP-IDF-Extension mit Docker funktionieren, allerdings funktioniert sie nur mit dem standard-Context von Docker, der aber von Docker-Desktop verändert wird.
     Somit war es notwendig Docker-Desktop wieder zu entfernen und zu Docker-Engine zu wechseln.
 
-    Mit Docker-Engine war es dann möglich die ESP-IDF-Extension mit VSCode auszuführen und Cdoe auf den ESP32 zu flashen.
+    Mit Docker-Engine war es dann möglich die ESP-IDF-Extension mit VSCode auszuführen und Code auf den ESP32 zu flashen.
     Die ESP-IDF Extension hat aber den Nachteil, dass es für uns notwendig wird, die ganze restliche Micro-ROS Pipeline selbst aufzusetzen.
 
-    Also wurde als nächstes die Micro-Ros docker Extension verwendet, die TODO.
-    Hierbei wurde einmal versucht den debugger zu testen. Grundsätzlich ist der openOCD Server hochgefahren. Allerdings war es danach nicht mehr möglich mit der ESP-IDF-Extension aus dem ersten Schritt auszuführen. 
+    Also wurde als nächstes die Micro-Ros docker Extension für ESP-IDF ausprobiert. Diese stellt die ein Docker-Image zur Verfügung, das in die ESP-IDF integriert werden kann. Das behebt das Problem, des händischen Aufsetzens der Pipeline wie im vorherigen Schritt.
+    Hierbei wurde einmal versucht den debugger zu testen. Grundsätzlich ist der openOCD Server, der Debugging ermöglicht hochgefahren. Allerdings war es danach nicht mehr möglich mit der ESP-IDF-Extension aus dem ersten Schritt auszuführen. 
     Anscheinend hatte die Ausführung dieses OpenOCD-Servers Einstellungen in der Konfiguration von VS-Code docker gemacht, die zur Folge hatten, dass die ESP-IDF-Extension nicht mehr richtig ausgeführt werden kann.
 
-    Da sich herausgestellt hat, dass die ersten beiden Methoden nicht zuverlässig waren, wurde schließlich die letzte Methode gewählt.
+    Da sich herausgestellt hat, dass die ersten beiden Methoden nicht zuverlässig waren, wurde schließlich die letzte Methode gewählt: Wir haben ein eigenes Docker Image erstellt.
 \end{flushleft}
