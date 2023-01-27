@@ -72,11 +72,11 @@ export default function Publish(props) {
         publishTwistMessage()
     }
     if (e.key === 'a' || e.key === 'A') {
-        updateTwist({angular: {...twist.angular, x: twist.angular.x + 0.01}})
+        updateTwist({angular: {...twist.angular, x: twist.angular.z + 0.01}})
         publishTwistMessage()
     }
     if (e.key === 'd' || e.key === 'D') {
-        updateTwist({angular: {...twist.angular, x: twist.angular.x - 0.01}})
+        updateTwist({angular: {...twist.angular, x: twist.angular.z - 0.01}})
         publishTwistMessage()
     }
     if (e.key === 'r' || e.key === 'R') {
